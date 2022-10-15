@@ -1,4 +1,4 @@
-﻿using agenda_contatos.Models;
+﻿using Agenda.Contatos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace agenda_contatos.Controllers
+namespace Agenda.Contatos.Controllers
 {
     public class HomeController : Controller
     {

@@ -16,7 +16,7 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "agenda_contatos": {
+    "Agenda.Contatos": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

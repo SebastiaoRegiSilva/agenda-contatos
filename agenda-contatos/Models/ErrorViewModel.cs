@@ -1,6 +1,6 @@
 using System;
 
-namespace agenda_contatos.Models
+namespace Agenda.Contatos.Models
 {
     public class ErrorViewModel
     {
