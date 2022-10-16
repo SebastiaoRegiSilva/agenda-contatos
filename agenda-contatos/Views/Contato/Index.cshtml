@@ -1,0 +1,75 @@
+﻿@{
+	ViewData["Title"] = "Listagem de contatos";
+}
+
+<div class="text-center">
+	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+		<a class="btn btn-primary" role="button">Adicionar novo contato</a>
+		<br />
+	</div>
+	
+	<h1 class="display-4">Listagem de Contatos</h1>
+
+	<!-- Bootstrap Table example -->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th>
+				<th scope="col">E-mail</th> <!-- Usar REGEX para validar e-mail!-->
+				<th scope="col">Celular</th> <!-- Usar REGEX para validar telefone!-->
+				<th scope="col">País</th> <!-- Usar API ou outro meio para identificar país por código dele!-->
+				<th scope="col">Estado</th><!-- https://servicodados.ibge.gov.br/api/v1/localidades/distritos?orderBy=nome API dos Estados do Brasil-->
+				<th scope="col">Tipo</th> <!-- https://servicodados.ibge.gov.br/api/v1/paises/BR endereço API de modelo no IBGE-->
+				<th scope="col"><!--Botões de edição/exclusão. --></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>mdo</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="btn-group" role="group">
+						<a role="button" class="btn btn-primary">Editar</a>
+						<a role="button" class="btn btn-danger">Apagar</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">2</th>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>fat</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="btn-group" role="group">
+						<a role="button" class="btn btn-primary">Editar</a>
+						<a role="button" class="btn btn-danger">Apagar</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td colspan="2">Larry the Bird</td>
+				<td>twitter</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="btn-group" role="group">
+						<a role="button" class="btn btn-primary">Editar</a>
+						<a role="button" class="btn btn-danger">Apagar</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
