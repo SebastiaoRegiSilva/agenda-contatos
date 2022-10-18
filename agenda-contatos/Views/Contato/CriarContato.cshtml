@@ -1,5 +1,48 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+	ViewData["Title"] = "Cadastro de contatos";
 }
+
+
+<form>
+	<div class="text-center">
+		<h1 class="display-4">Cadastrar contatos</h1>
+	</div>
+
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Nome</label>
+		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	</div>
+
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Endereço de e-mail</label>
+		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	</div>
+
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Celular</label>
+		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	</div>
+
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">País</label>
+		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	</div>
+
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Estado</label>
+		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	</div>
+
+	<select class="form-select" aria-label="Default select example">
+		<option selected>Selecione o tipo de contato</option>
+		<option value="1">Família</option>
+		<option value="2">Faculdade</option>
+		<option value="3">Trabalho</option>
+		<option value="4">Adicionar tipo inexistente</option>
+	</select>
+	<br />
+	<br />
+
+	<!--Botão para enviar todo o formulário-->
+	<button type="submit" class="btn btn-primary">Enviar</button>
+</form>
