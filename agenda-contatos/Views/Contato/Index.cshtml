@@ -2,75 +2,79 @@
 	ViewData["Title"] = "Listagem de contatos";
 }
 
+<!--Botão de voltar para tela anterior.-->
+<button onclick="history.back()" title="Clique para voltar">Voltar</button><p>
+
+
 <div class="text-left">
 	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
 		<a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="CriarContato">Adicionar novo contato</a>
 		<br />
 	</div>
-	
+
 	<div class="text-center">
 		<h1 class="display-4">Listagem de Contatos</h1>
 	</div>
-		<!-- Bootstrap Table example -->
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Nome</th> <!--Não permitir esse campo vazio ou com caracter numérico ou especial. -->
-					<th scope="col">E-mail</th> <!-- Usar REGEX para validar e-mail!-->
-					<th scope="col">Celular</th> <!-- Usar REGEX para validar telefone!-->
-					<th scope="col">País</th> <!-- Usar API ou outro meio para identificar país por código dele!-->
-					<th scope="col">Estado</th><!-- https://servicodados.ibge.gov.br/api/v1/localidades/distritos?orderBy=nome API dos Estados do Brasil-->
-					<th scope="col">Tipo</th> <!-- https://servicodados.ibge.gov.br/api/v1/paises/BR endereço API de modelo no IBGE-->
-					<th scope="col"><!--Botões de edição/exclusão. --></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>mdo</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<div class="btn-group" role="group">
-							<a role="button" class="btn btn-primary">Editar</a>
-							<a role="button" class="btn btn-danger">Apagar</a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>fat</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<div class="btn-group" role="group">
-							<a role="button" class="btn btn-primary">Editar</a>
-							<a role="button" class="btn btn-danger">Apagar</a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td colspan="2">Larry the Bird</td>
-					<td>twitter</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<div class="btn-group" role="group">
-							<a role="button" class="btn btn-primary">Editar</a>
-							<a role="button" class="btn btn-danger">Apagar</a>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<!-- Bootstrap Table example -->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th> <!--Não permitir esse campo vazio ou com caracter numérico ou especial. -->
+				<th scope="col">E-mail</th> <!-- Usar REGEX para validar e-mail!-->
+				<th scope="col">Celular</th> <!-- Usar REGEX para validar telefone!-->
+				<th scope="col">País</th> <!-- Usar API ou outro meio para identificar país por código dele!-->
+				<th scope="col">Estado</th><!-- https://servicodados.ibge.gov.br/api/v1/localidades/distritos?orderBy=nome API dos Estados do Brasil-->
+				<th scope="col">Tipo</th> <!-- CRIAR UMA TELA PARA CRIAR NOVOS TIPOS. https://servicodados.ibge.gov.br/api/v1/paises/BR endereço API de modelo no IBGE-->
+				<th scope="col"><!--Botões de edição/exclusão. --></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>mdo</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="btn-group" role="group">
+						<a role="button" class="btn btn-primary">Editar</a>
+						<a role="button" class="btn btn-danger">Apagar</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">2</th>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>fat</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="btn-group" role="group">
+						<a role="button" class="btn btn-primary">Editar</a>
+						<a role="button" class="btn btn-danger">Apagar</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td colspan="2">Larry the Bird</td>
+				<td>twitter</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="btn-group" role="group">
+						<a role="button" class="btn btn-primary">Editar</a>
+						<a role="button" class="btn btn-danger">Apagar</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 

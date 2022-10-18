@@ -2,36 +2,37 @@
 	ViewData["Title"] = "Cadastro de contatos";
 }
 <!--Botão de voltar para tela anterior.-->
-<button onclick="history.back()">Voltar</button>
+<button onclick="history.back()" title="Clique para voltar">Voltar</button>
 
-<form autocomplete="on"> <!--Asp action -->
+<form autocomplete="on">
+	<!--Asp action -->
 	<div class="text-center">
 		<h1 class="display-4">Cadastrar contatos</h1>
 	</div>
 
-	<div class="mb-3">
-		<label for="exampleFormControlInput1" class="form-label">Nome</label>
-		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	<div class="form-group">
+		<label for="nome">Nome</label>
+		<input type="text" class="form-control" placeholder="Digite o nome do contato">
 	</div>
 
-	<div class="mb-3">
-		<label for="exampleFormControlInput1" class="form-label">Endereço de e-mail</label>
-		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	<div class="form-group">
+		<label for="email">Endereço de e-mail</label>
+		<input type="email" class="form-control" placeholder="Digite o endereço de e-mail">
 	</div>
 
-	<div class="mb-3">
-		<label for="exampleFormControlInput1" class="form-label">Celular</label>
-		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	<div class="form-group">
+		<label for="celular">Celular</label>
+		<input type="number" class="form-control" placeholder="Digite o número do telefone celular">
 	</div>
 
-	<div class="mb-3">
-		<label for="exampleFormControlInput1" class="form-label">País</label>
-		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	<div class="form-group">
+		<label for="pais">País</label>
+		<input type="text" class="form-control" placeholder="Digite o nome do País">
 	</div>
 
-	<div class="mb-3">
-		<label for="exampleFormControlInput1" class="form-label">Estado</label>
-		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	<div class="form-group">
+		<label for="estado">Estado/Província</label>
+		<input type="text" class="form-control" placeholder="Digite o nome do Estado/Província">
 	</div>
 
 	<select class="form-select" aria-label="Default select example">
@@ -45,5 +46,7 @@
 	<br />
 
 	<!--Botão para enviar todo o formulário-->
-	<button type="submit" class="btn btn-primary">Enviar</button>
+	<button type="submit" class="btn btn-primary">Adicionar</button>
+	<!--Voltar a página inicial-->
+	<a class="btn btn-secondary" asp-controller="Contato" asp-action="Index">Página Inicial</a>
 </form>
