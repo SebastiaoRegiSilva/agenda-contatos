@@ -40,7 +40,7 @@ namespace Agenda.Contatos.Controllers
         /// <summary>
         /// Apagar um contato existente.
         /// </summary>
-        public IActionResult ApagarConfimarcao()
+        public IActionResult ApagarConfirmacao()
         {
             return View();
         }
