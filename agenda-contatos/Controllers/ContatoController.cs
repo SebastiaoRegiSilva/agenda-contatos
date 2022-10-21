@@ -37,7 +37,5 @@ namespace Agenda.Contatos.Controllers
         {
             return View();
         }
-
-
     }
 }
