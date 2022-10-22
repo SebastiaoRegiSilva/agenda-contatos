@@ -1,10 +1,11 @@
-﻿@{
+﻿@model ContatoModel
+@{
 	ViewData["Title"] = "Cadastro de contatos";
 }
 <!--Botão de voltar para tela anterior.-->
 <button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
 
-<form autocomplete="on">
+<form autocomplete="on" asp-controller="Contato" asp-action="CriarContato" method="post">
 	<!--Asp action -->
 	<div class="text-center">
 		<h1 class="display-4">Cadastrar contatos</h1>
@@ -12,27 +13,27 @@
 
 	<div class="form-group">
 		<label for="nome">Nome</label>
-		<input type="text" class="form-control" placeholder="Digite o nome do contato">
+		<input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
 	</div>
 
 	<div class="form-group">
 		<label for="email">Endereço de e-mail</label>
-		<input type="email" class="form-control" placeholder="Digite o endereço de e-mail">
+		<input type="email" asp-for="Email" class="form-control" placeholder="Digite o endereço de e-mail">
 	</div>
 
 	<div class="form-group">
 		<label for="celular">Celular</label>
-		<input type="number" class="form-control" placeholder="Digite o número do telefone celular">
+		<input type="number" asp-for="NumeroCelular" class="form-control" placeholder="Digite o número do telefone celular">
 	</div>
 
 	<div class="form-group">
 		<label for="pais">País</label>
-		<input type="text" class="form-control" placeholder="Digite o nome do País">
+		<input type="text" asp-for="Pais" class="form-control" placeholder="Digite o nome do País">
 	</div>
 
 	<div class="form-group">
 		<label for="estado">Estado/Província</label>
-		<input type="text" class="form-control" placeholder="Digite o nome do Estado/Província">
+		<input type="text" asp-for="Estado" class="form-control" placeholder="Digite o nome do Estado/Província">
 	</div>
 
 	<select class="form-select" aria-label="Default select example">
