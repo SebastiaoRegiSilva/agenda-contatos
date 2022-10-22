@@ -8,6 +8,8 @@ namespace Agenda.Contatos.Repository
 {
     public interface IContatoRepository
     {
+        List<ContatoModel> BuscarTodos();
+
         ContatoModel Adicionar(ContatoModel contato);
     }
 }

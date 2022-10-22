@@ -23,7 +23,9 @@ namespace Agenda.Contatos.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var ctc = _contatoRepository.BuscarTodos();
+
+            return View(ctc);
         }
 
         public IActionResult CriarContato()

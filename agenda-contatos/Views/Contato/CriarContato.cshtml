@@ -5,7 +5,7 @@
 <!--Botão de voltar para tela anterior.-->
 <button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
 
-<form autocomplete="on" asp-controller="Contato" asp-action="CriarContato" method="post">
+<form asp-controller="Contato" asp-action="CriarContato" method="post">
 	<!--Asp action -->
 	<div class="text-center">
 		<h1 class="display-4">Cadastrar contatos</h1>
@@ -23,7 +23,7 @@
 
 	<div class="form-group">
 		<label for="celular">Celular</label>
-		<input type="number" asp-for="NumeroCelular" class="form-control" placeholder="Digite o número do telefone celular">
+		<input type="text" asp-for="NumeroCelular" class="form-control" placeholder="Digite o número do telefone celular">
 	</div>
 
 	<div class="form-group">
@@ -38,10 +38,10 @@
 
 	<select class="form-select" aria-label="Default select example">
 		<option selected>Selecione o tipo de contato</option>
-		<option value="1">Família</option>
-		<option value="2">Faculdade</option>
-		<option value="3">Trabalho</option>
-		<option value="4">Adicionar tipo inexistente</option>
+		<option value="Família">Família</option>
+		<option value="Faculdade">Faculdade</option>
+		<option value="Trabalho">Trabalho</option>
+		<option value="Ainda implementar">Adicionar tipo inexistente</option>
 	</select>
 	<br />
 	<br />

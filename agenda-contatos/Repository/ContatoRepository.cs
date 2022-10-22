@@ -22,5 +22,14 @@ namespace Agenda.Contatos.Repository
             _dataContext.SaveChangesAsync();
             return contato;
         }
+
+        /// <summary>
+        /// Buscar todos dados cadastrados na base de dados.
+        /// </summary>
+        /// <returns></returns>
+        public List<ContatoModel> BuscarTodos()
+        {
+            return _dataContext.Contatos.ToList();
+        }
     }
 }
