@@ -40,6 +40,6 @@ namespace Agenda.Contatos.Models
         /// <summary>
         /// Tipo de contato (Criar ENUM em Lugar do IEnumerable).
         /// </summary>
-        public IEnumerable<string> Tipo{ get; set; }
+        public string Tipo{ get; set; }
     }
 }
