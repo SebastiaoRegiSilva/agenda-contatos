@@ -9,10 +9,6 @@ namespace Agenda.Contatos.Data
 {
     public class DataContext : DbContext
     {
-        /// <summary>
-        /// Construtor com injeção de depedência.
-        /// </summary>
-        /// <param name="options"></param>
         public DataContext(DbContextOptions<DataContext> options) : base (options)
         {
 
