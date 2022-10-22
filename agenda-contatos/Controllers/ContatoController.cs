@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Agenda.Contatos.Models;
+using Agenda.Contatos.Repository;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,17 @@ namespace Agenda.Contatos.Controllers
 {
     public class ContatoController : Controller
     {
+        private readonly IContatoRepository _contatoRepository;
+        
+        /// <summary>
+        /// Construtor com injeção de dependência.
+        /// </summary>
+        /// <param name="contatoRepository"></param>
+        public ContatoController(IContatoRepository contatoRepository)
+        {
+            _contatoRepository = contatoRepository;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -36,6 +49,13 @@ namespace Agenda.Contatos.Controllers
         public IActionResult ApagarConfirmacao()
         {
             return View();
+        }
+        // Métodos POST.
+        [HttpPost]
+        public IActionResult CriarContato(ContatoModel contato)
+        {
+            _contatoRepository.Adicionar(contato);
+            return RedirectToAction("Index");
         }
     }
 }
