@@ -38,7 +38,7 @@ namespace Agenda.Contatos.Controllers
             return View();
         }
 
-        public IActionResult EditarContato()
+        public IActionResult EditarContato(int id)
         {
             return View();
         }
@@ -58,6 +58,12 @@ namespace Agenda.Contatos.Controllers
         {
             _contatoRepository.Adicionar(contato);
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult EditarContato(int id)
+        {
+            return View();
         }
     }
 }
