@@ -31,5 +31,15 @@ namespace Agenda.Contatos.Repository
         {
             return _dataContext.Contatos.ToList();
         }
+
+        /// <summary>
+        /// Buscar contato com base em seu código de identificação.
+        /// </summary>
+        /// <param name="id">Código de identificação do contato.</param>
+        /// <returns>Único contato correspondente ao código de identificação.</returns>
+        public ContatoModel BuscarPorId(int id)
+        {
+            return _dataContext.Contatos.FirstOrDefault(c =>c.Id == id);
+        }
     }
 }

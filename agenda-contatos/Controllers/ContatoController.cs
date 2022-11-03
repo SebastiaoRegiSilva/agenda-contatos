@@ -40,6 +40,7 @@ namespace Agenda.Contatos.Controllers
 
         public IActionResult EditarContato(int id)
         {
+            _contatoRepository.BuscarPorId(id);
             return View();
         }
 
@@ -60,6 +61,10 @@ namespace Agenda.Contatos.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Editar contato com base em seu código de identificação.
+        /// </summary>
+        /// <param name="id">Código de identificação do contato.</param>
         [HttpPost]
         public IActionResult EditarContato(int id)
         {
