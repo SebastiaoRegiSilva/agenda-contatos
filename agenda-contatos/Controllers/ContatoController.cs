@@ -40,8 +40,9 @@ namespace Agenda.Contatos.Controllers
 
         public IActionResult EditarContato(int id)
         {
-            _contatoRepository.BuscarPorId(id);
-            return View();
+            var contato = _contatoRepository.BuscarPorId(id);
+
+            return View(contato);
         }
 
         public JsonResult ApagarContato()
@@ -64,11 +65,12 @@ namespace Agenda.Contatos.Controllers
         /// <summary>
         /// Editar contato com base em seu código de identificação.
         /// </summary>
-        /// <param name="id">Código de identificação do contato.</param>
+        /// <param name="contato">Contato.</param>
         [HttpPost]
-        public IActionResult EditarContato(int id)
+        public IActionResult EditarContato(ContatoModel contato)
         {
-            return View();
+            _contatoRepository.EditarContato(contato);
+            return RedirectToAction("Index");
         }
     }
 }
