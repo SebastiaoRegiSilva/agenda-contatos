@@ -68,14 +68,23 @@ namespace Agenda.Contatos.Controllers
         [HttpPost]
         public IActionResult CriarContato(ContatoModel contato)
         {
-            // Validação com Data Annotations.
-            if (ModelState.IsValid)
+            try
             {
-                _contatoRepository.Adicionar(contato);
+                // Validação com Data Annotations.
+                if (ModelState.IsValid)
+                {
+                    _contatoRepository.Adicionar(contato);
+                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, contato não foi cadastrado! ERRO =>{ex.Message}";
                 return RedirectToAction("Index");
             }
-
-            return View(contato);           
         }
 
         /// <summary>

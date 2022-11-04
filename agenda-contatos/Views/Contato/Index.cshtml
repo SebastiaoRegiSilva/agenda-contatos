@@ -17,6 +17,22 @@
 		<div class="text-center">
 			<h1 class="display-4">Listagem de Contatos</h1>
 		</div>
+		@if (TempData["MensagemSucesso"] != null)
+		{
+			<!--Modal, cada caixa de alerta.-->
+			<div class="alert alert-success" role="alert">
+				<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+				O contato de nome @Model.Last().Nome foi cadastrado com sucesso!
+			</div>
+		}
+
+		@if (TempData["MensagemErro"] != null)
+		{
+			<div class="alert alert-danger" role="alert">
+				<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+				This is a success alert—check it out!
+			</div>
+		}
 		<!-- Bootstrap Table example -->
 		<table class="table table-striped">
 			<thead>
@@ -55,14 +71,6 @@
 				}
 			</tbody>
 		</table>
-		<div class="alert alert-success" role="alert">
-			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
-			This is a success alert—check it out!
-		</div>
 
-		<div class="alert alert-danger" role="alert">
-			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
-			This is a success alert—check it out!
-		</div>
+		<br />
 	</div>
-
