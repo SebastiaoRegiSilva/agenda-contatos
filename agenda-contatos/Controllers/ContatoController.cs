@@ -50,9 +50,21 @@ namespace Agenda.Contatos.Controllers
         /// </summary>
         public IActionResult ApagarContato(int id)
         {
-            _contatoRepository.ApagarContato(id);
-
-            return RedirectToAction("Index");
+            try
+            {
+               var apagado = _contatoRepository.ApagarContato(id);
+                if (apagado)
+                    TempData["MensagemSucesso"] = "apagado";
+                else
+                    TempData["MensagemErro"] = $"Ops, contato não foi apagado!";
+                
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, contato não foi apagado! ERRO =>{ex.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         /// <summary>
@@ -74,7 +86,7 @@ namespace Agenda.Contatos.Controllers
                 if (ModelState.IsValid)
                 {
                     _contatoRepository.Adicionar(contato);
-                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
+                    TempData["MensagemSucesso"] = "cadastrado";
                     return RedirectToAction("Index");
                 }
 
@@ -100,7 +112,7 @@ namespace Agenda.Contatos.Controllers
                 if (ModelState.IsValid)
                 {
                     _contatoRepository.EditarContato(contato);
-                    TempData["MensagemSucesso"] = "Contato alterado com sucesso";
+                    TempData["MensagemSucesso"] = "alterado";
                     return RedirectToAction("Index");
                 }
 
