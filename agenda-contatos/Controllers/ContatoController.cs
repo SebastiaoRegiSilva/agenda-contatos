@@ -94,14 +94,23 @@ namespace Agenda.Contatos.Controllers
         [HttpPost]
         public IActionResult EditarContato(ContatoModel contato)
         {
-            // Validação com Data Annotations.
-            if (ModelState.IsValid)
+            try
             {
-                _contatoRepository.EditarContato(contato);
+                // Validação com Data Annotations.
+                if (ModelState.IsValid)
+                {
+                    _contatoRepository.EditarContato(contato);
+                    TempData["MensagemSucesso"] = "Contato alterado com sucesso";
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, contato não foi editado! ERRO =>{ex.Message}";
                 return RedirectToAction("Index");
             }
-
-            return View(contato);
         }
     }
 }
