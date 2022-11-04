@@ -50,7 +50,7 @@
 			<tbody>
 				@if (Model != null && Model.Any())
 				{
-					foreach (var register in Model)
+					foreach (var register in Model.OrderBy(r => r.Nome))
 					{
 						<tr>
 							<th scope="row">@register.Id</th> <!--Implementar um iterador.-->
