@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ContatoModel
+@{
 	ViewData["Title"] = "Exclusão de contatos";
 }
 
@@ -8,7 +9,12 @@
 	<div class="text-center">
 		<h3>Tela de exclusão de contatos.</h3>
 	</div>
+
+	<div class="text-sm-left">
+		<h5>Realmente deseja excluir @Model.Nome?</h5>
+	</div>
 	<!--Recuperar informções mínimas do contato para exclusão.-->
 
-	<a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="ApagarContato">Confirmar</a>
+	<a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="ApagarContato" asp-route-id="@Model.Id">Confirmar</a>
+	<a class="btn btn-light" role="button" asp-controller="Contato" asp-action="EditarContato" asp-route-id="@Model.Id">Editar</a>
 	<a class="btn btn-danger" role="button" asp-controller="Home" asp-action="Index">Cancelar</a>

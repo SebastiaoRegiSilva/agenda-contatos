@@ -38,26 +38,91 @@ namespace Agenda.Contatos.Controllers
             return View();
         }
 
-        public IActionResult EditarContato()
+        public IActionResult EditarContato(int id)
         {
-            return View();
+            var contato = _contatoRepository.BuscarPorId(id);
+
+            return View(contato);
         }
 
-        public JsonResult ApagarContato()
+        /// <summary>
+        /// Exclusão após confirmação.
+        /// </summary>
+        public IActionResult ApagarContato(int id)
         {
-            return Json("Contato Apagado");
+            try
+            {
+               var apagado = _contatoRepository.ApagarContato(id);
+                if (apagado)
+                    TempData["MensagemSucesso"] = "apagado";
+                else
+                    TempData["MensagemErro"] = $"Ops, contato não foi apagado!";
+                
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, contato não foi apagado! ERRO =>{ex.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
-        public IActionResult ApagarConfirmacao()
+        /// <summary>
+        /// Confirmar exclusão do contato.
+        /// </summary>
+        /// <param name="id">Código de identificação do contato a ser excluído.</param>
+        public IActionResult ApagarConfirmacao(int id)
         {
-            return View();
+            var contatoRecuperado = _contatoRepository.BuscarPorId(id);
+            return View(contatoRecuperado);
         }
         // Métodos POST.
         [HttpPost]
         public IActionResult CriarContato(ContatoModel contato)
         {
-            _contatoRepository.Adicionar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                // Validação com Data Annotations.
+                if (ModelState.IsValid)
+                {
+                    _contatoRepository.Adicionar(contato);
+                    TempData["MensagemSucesso"] = "cadastrado";
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, contato não foi cadastrado! ERRO =>{ex.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
+        /// <summary>
+        /// Editar contato com base em seu código de identificação.
+        /// </summary>
+        /// <param name="contato">Contato.</param>
+        [HttpPost]
+        public IActionResult EditarContato(ContatoModel contato)
+        {
+            try
+            {
+                // Validação com Data Annotations.
+                if (ModelState.IsValid)
+                {
+                    _contatoRepository.EditarContato(contato);
+                    TempData["MensagemSucesso"] = "alterado";
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, contato não foi editado! ERRO =>{ex.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }

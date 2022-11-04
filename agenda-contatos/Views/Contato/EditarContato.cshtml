@@ -1,46 +1,49 @@
-﻿@{
+﻿@model ContatoModel 
+@{
 	ViewData["Title"] = "Edição de contatos";
 }
 <!--Botão de voltar para tela anterior.-->
 <button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
 
-<form autocomplete="on">
-	<!--Asp action -->
+<form asp-controller="Contato" asp-action="EditarContato" method="post">
 	<div class="text-center">
 		<h1 class="display-4">Editar contato</h1>
 	</div>
 
 	<div class="form-group">
 		<label for="nome">Nome</label>
-		<input type="text" class="form-control" placeholder="Digite o nome do contato">
+		<input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
+		@Html.ValidationMessageFor(n => n.Nome)
 	</div>
 
 	<div class="form-group">
 		<label for="email">Endereço de e-mail</label>
-		<input type="email" class="form-control" placeholder="Digite o endereço de e-mail">
+		<input type="email" asp-for="Email" class="form-control" placeholder="Digite o endereço de e-mail">
+		@Html.ValidationMessageFor(e => e.Email)
 	</div>
 
 	<div class="form-group">
 		<label for="celular">Celular</label>
-		<input type="number" class="form-control" placeholder="Digite o número do telefone celular">
+		<input type="text" asp-for="NumeroCelular" class="form-control" placeholder="Digite o número do telefone celular">
+		@Html.ValidationMessageFor(c => c.NumeroCelular)
 	</div>
 
 	<div class="form-group">
 		<label for="pais">País</label>
-		<input type="text" class="form-control" placeholder="Digite o nome do País">
+		<input type="text" asp-for="Pais" class="form-control" placeholder="Digite o nome do País">
 	</div>
 
 	<div class="form-group">
 		<label for="estado">Estado/Província</label>
-		<input type="text" class="form-control" placeholder="Digite o nome do Estado/Província">
+		<input type="text" asp-for="Estado" class="form-control" placeholder="Digite o nome do Estado/Província">
 	</div>
 
 	<select class="form-select" aria-label="Default select example">
 		<option selected>Selecione o tipo de contato</option>
-		<option value="1">Família</option>
-		<option value="2">Faculdade</option>
-		<option value="3">Trabalho</option>
-		<option value="4">Adicionar tipo inexistente</option>
+		<option value="Família">Família</option>
+		<option value="Faculdade">Faculdade</option>
+		<option value="Trabalho">Trabalho</option>
+		<option value="Ainda implementar">Adicionar tipo inexistente</option>
 	</select>
 	<br />
 	<br />
