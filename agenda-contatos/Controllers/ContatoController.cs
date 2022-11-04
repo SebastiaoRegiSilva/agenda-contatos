@@ -45,14 +45,24 @@ namespace Agenda.Contatos.Controllers
             return View(contato);
         }
 
-        public JsonResult ApagarContato()
+        /// <summary>
+        /// Exclusão após confirmação.
+        /// </summary>
+        public IActionResult ApagarContato(int id)
         {
-            return Json("Contato Apagado");
+            _contatoRepository.ApagarContato(id);
+
+            return RedirectToAction("Index");
         }
 
-        public IActionResult ApagarConfirmacao()
+        /// <summary>
+        /// Confirmar exclusão do contato.
+        /// </summary>
+        /// <param name="id">Código de identificação do contato a ser excluído.</param>
+        public IActionResult ApagarConfirmacao(int id)
         {
-            return View();
+            var contatoRecuperado = _contatoRepository.BuscarPorId(id);
+            return View(contatoRecuperado);
         }
         // Métodos POST.
         [HttpPost]

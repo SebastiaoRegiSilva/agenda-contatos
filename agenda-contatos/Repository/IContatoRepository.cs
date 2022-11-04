@@ -15,5 +15,7 @@ namespace Agenda.Contatos.Repository
         ContatoModel Adicionar(ContatoModel contato);
 
         ContatoModel EditarContato(ContatoModel contato);
+
+        bool ApagarContato(int id);
     }
 }

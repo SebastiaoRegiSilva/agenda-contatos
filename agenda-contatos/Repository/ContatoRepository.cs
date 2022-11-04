@@ -66,5 +66,22 @@ namespace Agenda.Contatos.Repository
                 return contatoDb;
             }
         }
+
+        /// <summary>
+        /// Excluir da base de dados um contato.
+        /// </summary>
+        /// <param name="id">Código de identificação do contato.</param>
+        public bool ApagarContato(int id)
+        {
+            var contatoDb = BuscarPorId(id);
+            if (contatoDb == null)
+                throw new Exception("Contato não encontrado na base de dados.");
+            else
+            {
+                _dataContext.Contatos.Remove(contatoDb);
+                _dataContext.SaveChanges();
+                return true;
+            }
+        }
     }
 }
