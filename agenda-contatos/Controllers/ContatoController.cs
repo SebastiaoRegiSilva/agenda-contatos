@@ -68,8 +68,14 @@ namespace Agenda.Contatos.Controllers
         [HttpPost]
         public IActionResult CriarContato(ContatoModel contato)
         {
-            _contatoRepository.Adicionar(contato);
-            return RedirectToAction("Index");
+            // Validação com Data Annotations.
+            if (ModelState.IsValid)
+            {
+                _contatoRepository.Adicionar(contato);
+                return RedirectToAction("Index");
+            }
+
+            return View(contato);           
         }
 
         /// <summary>
@@ -79,8 +85,14 @@ namespace Agenda.Contatos.Controllers
         [HttpPost]
         public IActionResult EditarContato(ContatoModel contato)
         {
-            _contatoRepository.EditarContato(contato);
-            return RedirectToAction("Index");
+            // Validação com Data Annotations.
+            if (ModelState.IsValid)
+            {
+                _contatoRepository.EditarContato(contato);
+                return RedirectToAction("Index");
+            }
+
+            return View(contato);
         }
     }
 }
