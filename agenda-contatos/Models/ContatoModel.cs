@@ -46,7 +46,7 @@ namespace Agenda.Contatos.Models
         /// <summary>
         /// Tipo de contato (Criar ENUM em Lugar do IEnumerable).
         /// </summary>
-        ///[Required(ErrorMessage = "Selecione o tipo de contato")]
-        public string Tipo{ get; set; }
+        [Required(ErrorMessage = "Selecione o tipo de contato")]
+        public TipoContato Tipo{ get; set; }
     }
 }
