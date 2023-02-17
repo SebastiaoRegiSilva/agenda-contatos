@@ -1,5 +1,4 @@
-﻿using Agenda.Contatos.Models;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Agenda.Contatos.Migrations
 {
@@ -7,7 +6,6 @@ namespace Agenda.Contatos.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            /// Código de identificação, nome e número de telefone não podem ser nulos. 
             migrationBuilder.CreateTable(
                 name: "Contatos",
                 columns: table => new

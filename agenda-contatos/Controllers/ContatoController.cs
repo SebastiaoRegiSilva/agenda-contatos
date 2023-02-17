@@ -2,17 +2,20 @@
 using Agenda.Contatos.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Controllers
 {
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;
-
+        
         /// <summary>
         /// Construtor com injeção de dependência.
         /// </summary>
-        /// <param name="contatoRepository">Contato no repositório.</param>
+        /// <param name="contatoRepository"></param>
         public ContatoController(IContatoRepository contatoRepository)
         {
             _contatoRepository = contatoRepository;

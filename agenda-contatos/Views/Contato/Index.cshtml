@@ -8,70 +8,70 @@
 <button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button><p>
 
 
-	<div class="text-left">
-		<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-			<a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="CriarContato">Adicionar novo contato</a>
-			<br />
-		</div>
-
-		<div class="text-center">
-			<h1 class="display-4">Listagem de Contatos</h1>
-		</div>
-		@if (TempData["MensagemSucesso"] != null)
-		{
-			<!--Modal, cada caixa de alerta.-->
-			<div class="alert alert-success" role="alert">
-				<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
-				O contato foi @TempData["MensagemSucesso"] com sucesso!
-			</div>
-		}
-
-		@if (TempData["MensagemErro"] != null)
-		{
-			<div class="alert alert-danger" role="alert">
-				<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
-				@TempData["MensagemErro"]
-			</div>
-		}
-		<!-- Bootstrap Table example -->
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Nome</th> <!--Não permitir esse campo vazio ou com caracter numérico ou especial. -->
-					<th scope="col">E-mail</th> <!-- Usar REGEX para validar e-mail!-->
-					<th scope="col">Celular</th> <!-- Usar REGEX para validar telefone!-->
-					<th scope="col">País</th> <!-- Usar API ou outro meio para identificar país por código dele!-->
-					<th scope="col">Estado</th><!-- https://servicodados.ibge.gov.br/api/v1/localidades/distritos?orderBy=nome API dos Estados do Brasil-->
-					<th scope="col">Tipo</th> <!-- CRIAR UMA TELA PARA CRIAR NOVOS TIPOS. https://servicodados.ibge.gov.br/api/v1/paises/BR endereço API de modelo no IBGE-->
-					<th scope="col"><!--Botões de edição/exclusão. --></th>
-				</tr>
-			</thead>
-			<tbody>
-				@if (Model != null && Model.Any())
-				{
-					var contador = 1; ;// Contador para enumerar os contatos.
-					foreach (var register in Model.OrderBy(r => r.Nome))
-					{
-						<tr>
-							<th scope="row">@contador</th>
-							<td>@register.Nome</td>
-							<td>@register.Email</td>
-							<td>@register.NumeroCelular</td>
-							<td>@register.Pais</td>
-							<td>@register.Estado</td>
-							<td>@register.Tipo</td>
-							<td align="right">
-								<div class="btn-group" role="group">
-									<a role="button" class="btn btn-primary" asp-route-id="@register.Id" asp-controller="Contato" asp-action="EditarContato">Editar</a>
-									<a role="button" class="btn btn-danger" asp-route-id="@register.Id" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
-								</div>
-							</td>
-						</tr>
-						contador++;
-					}
-				}
-			</tbody>
-		</table>
+<div class="text-left">
+	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+		<a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="CriarContato">Adicionar novo contato</a>
 		<br />
 	</div>
+
+	<div class="text-center">
+		<h1 class="display-4">Listagem de Contatos</h1>
+	</div>
+	@if (TempData["MensagemSucesso"] != null)
+	{
+		<!--Modal, cada caixa de alerta.-->
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			O contato foi @TempData["MensagemSucesso"] com sucesso!
+		</div>
+	}
+
+	@if (TempData["MensagemErro"] != null)
+	{
+		<div class="alert alert-danger" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			@TempData["MensagemErro"]
+		</div>
+	}
+	<!-- Bootstrap Table example -->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th> <!--Não permitir esse campo vazio ou com caracter numérico ou especial. -->
+				<th scope="col">E-mail</th> <!-- Usar REGEX para validar e-mail!-->
+				<th scope="col">Celular</th> <!-- Usar REGEX para validar telefone!-->
+				<th scope="col">País</th> <!-- Usar API ou outro meio para identificar país por código dele!-->
+				<th scope="col">Estado</th><!-- https://servicodados.ibge.gov.br/api/v1/localidades/distritos?orderBy=nome API dos Estados do Brasil-->
+				<th scope="col">Tipo</th> <!-- CRIAR UMA TELA PARA CRIAR NOVOS TIPOS. https://servicodados.ibge.gov.br/api/v1/paises/BR endereço API de modelo no IBGE-->
+				<th scope="col"><!--Botões de edição/exclusão. --></th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model != null && Model.Any())
+			{
+				var contador = 1; ;// Contador para enumerar os contatos.
+				foreach (var register in Model.OrderBy(r => r.Nome))
+				{
+					<tr>
+						<th scope="row">@contador</th>
+						<td>@register.Nome</td>
+						<td>@register.Email</td>
+						<td>@register.NumeroCelular</td>
+						<td>@register.Pais</td>
+						<td>@register.Estado</td>
+						<td>@register.Tipo</td>
+						<td align="right">
+							<div class="btn-group" role="group">
+								<a role="button" class="btn btn-primary" asp-route-id="@register.Id" asp-controller="Contato" asp-action="EditarContato">Editar</a>
+								<a role="button" class="btn btn-danger" asp-route-id="@register.Id" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
+							</div>
+						</td>
+					</tr>
+					contador++;
+				}
+			}
+		</tbody>
+	</table>
+	<br />
+</div>
