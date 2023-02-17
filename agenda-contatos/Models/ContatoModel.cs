@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Agenda.Contatos.Models
 {
@@ -44,9 +40,9 @@ namespace Agenda.Contatos.Models
         public string Estado { get; set; }
 
         /// <summary>
-        /// Tipo de contato (Criar ENUM em Lugar do IEnumerable).
+        /// Tipo de contato.
         /// </summary>
         [Required(ErrorMessage = "Selecione o tipo de contato")]
-        public TipoContatoModel Tipo{ get; set; }
+        public string Tipo{ get; set; }
     }
 }
