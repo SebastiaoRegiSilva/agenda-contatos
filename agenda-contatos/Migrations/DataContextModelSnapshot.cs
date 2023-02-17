@@ -48,7 +48,15 @@ namespace Agenda.Contatos.Migrations
 
                     b.ToTable("Contatos");
                 });
+
+            modelBuilder.Entity("Agenda.Contatos.Models.TipoContatoModel", b =>
+            {
+                b.Property<string>("nome")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("varchar")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 #pragma warning restore 612, 618
+            });
         }
     }
 }
