@@ -18,6 +18,6 @@ namespace Agenda.Contatos.Repository
 
         ///<summary>Solicitar a deleção de um tipo de contato no repositório.</summary>
         ///<returns>Status da solicitação.</returns>
-        bool ApagarContato(string nome);
+        bool ApagarTipoContato(string nome);
     }
 }

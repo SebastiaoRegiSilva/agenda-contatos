@@ -1,7 +1,7 @@
 ﻿namespace Agenda.Contatos.Models
 {
     /// <summary>
-    /// Tipo do contato a ser salvo na base dados.
+    /// Modelo de tipo do contato a ser salvo na base dados.
     /// </summary>
     public class TipoContatoModel
     {

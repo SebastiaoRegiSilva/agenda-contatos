@@ -11,11 +11,11 @@ namespace Agenda.Contatos.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;
-        
+
         /// <summary>
         /// Construtor com injeção de dependência.
         /// </summary>
-        /// <param name="contatoRepository"></param>
+        /// <param name="contatoRepository">Contato no repositório.</param>
         public ContatoController(IContatoRepository contatoRepository)
         {
             _contatoRepository = contatoRepository;
