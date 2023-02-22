@@ -17,5 +17,7 @@ namespace Agenda.Contatos.Data
         public DbSet<ContatoModel> Contatos { get; set; }
         public DbSet<UsuarioModel> Usuarios{ get; set; }
 
+        public DbSet<TipoContatoModel> TiposDeContato { get; set; }
+
     }
 }
