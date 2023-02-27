@@ -1,0 +1,36 @@
+﻿@model List<UsuarioModel>
+
+@{
+	ViewData["Title"] = "Listagem de usuários";
+}
+
+<!--Botão de voltar para tela anterior.-->
+<button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button><p>
+
+
+<div class="text-left">
+	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+		<a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="CadastrarContato">Adicionar novo usuário</a>
+		<br />
+	</div>
+
+	<div class="text-center">
+		<h1 class="display-4">Listagem de Usuários</h1>
+	</div>
+	@if (TempData["MensagemSucesso"] != null)
+	{
+		<!--Modal, cada caixa de alerta.-->
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			O usuário foi @TempData["MensagemSucesso"] com sucesso!
+		</div>
+	}
+
+	@if (TempData["MensagemErro"] != null)
+	{
+		<div class="alert alert-danger" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			@TempData["MensagemErro"]
+		</div>
+	}
+</div>
