@@ -10,7 +10,7 @@
 
 <div class="text-left">
 	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-		<a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="CadastrarContato">Adicionar novo usuário</a>
+		<a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="CadastrarUsuario">Adicionar novo usuário</a>
 		<br />
 	</div>
 
@@ -26,6 +26,7 @@
 		</div>
 	}
 
+	<!--Implementar uma -->
 	@if (TempData["MensagemErro"] != null)
 	{
 		<div class="alert alert-danger" role="alert">
@@ -33,4 +34,45 @@
 			@TempData["MensagemErro"]
 		</div>
 	}
+
+	<!-- Bootstrap Table example -->
+	<table class="table table-striped" id="table-usuarios">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th> <!--Não permitir esse campo vazio ou com caracter numérico ou especial. -->
+				<th scope="col">E-mail</th> <!-- Usar REGEX para validar e-mail!-->
+				<th scope="col">Login</th> <!-- Não permitir esse campo vazio!-->
+				<th scope="col">Data de Cadastro</th> <!-- Não permitir esse campo vazio!-->
+				<th scope="col">Última Alteração</th>
+				<th scope="col">Nivel de permissão</th> <!-- Não permitir esse campo vazio!-->
+				<th scope="col"><!--Botões de edição/exclusão. --></th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model != null && Model.Any())
+			{
+				var contador = 1; ;// Contador para enumerar os usuários.
+				foreach (var register in Model.OrderBy(r => r.NivelPermissao))
+				{
+					<tr>
+						<th scope="row">@contador</th>
+						<td>@register.Nome</td>
+						<td>@register.Email</td>
+						<td>@register.Login</td>
+						<td>@register.DataCadastro</td>
+						<td>@register.DataAtualizacao</td>
+						<td>@register.NivelPermissao</td>
+						<td align="right">
+							<div class="btn-group" role="group">
+								<a role="button" class="btn btn-primary" asp-route-id="@register.Id" asp-controller="Usuario" asp-action="EditarUsuario">Editar</a>
+								<a role="button" class="btn btn-danger" asp-route-id="@register.Id" asp-controller="Usuario" asp-action="ApagarConfirmacao">Apagar</a>
+							</div>
+						</td>
+					</tr>
+					contador++;
+				}
+			}
+		</tbody>
+	</table>
 </div>

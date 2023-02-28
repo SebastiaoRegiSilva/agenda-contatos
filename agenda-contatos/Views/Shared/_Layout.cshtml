@@ -18,14 +18,24 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Página Inicial</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contatos</a>
-                        </li>
-                    </ul>
+					<ul class="navbar-nav flex-grow-1">
+						<!--Link da página da Home.-->
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Página Inicial</a>
+						</li>
+						<!--Link da página de Contatos.-->
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contatos</a>
+						</li>
+						<!--Link da página de Usuários.-->
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuários</a>
+						</li>
+						<!--Link da página sobre o autor.-->
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Sobre o Desenvolvedor</a>
+						</li>
+					</ul>
                 </div>
             </div>
         </nav>
