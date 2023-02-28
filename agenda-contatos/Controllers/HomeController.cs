@@ -16,6 +16,15 @@ namespace Agenda.Contatos.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Conteúdo sobre o desenvolvedor e tecnologias utilizadas na apliação.
+        /// </summary>
+        /// <returns>Informações sobre o desenvolvedor.</returns>
+        public IActionResult Sobre()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

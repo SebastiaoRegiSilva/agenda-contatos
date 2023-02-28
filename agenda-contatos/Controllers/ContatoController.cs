@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Controllers
 {
+    /// <summary>Controller que provê endpoints relacionados à entidade contato.</summary>
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;
