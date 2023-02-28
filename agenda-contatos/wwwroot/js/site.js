@@ -6,6 +6,11 @@ $(document).ready(function () {
 	$('#table-contatos').DataTable();
 });
 
+/// Implementar função para padronizar exibição de registros.
+$(document).ready(function () {
+	$('#table-usuarios').DataTable();
+});
+
 $('.close-alert').click(function () {
 	$('.alert').hide('hide');
 });
