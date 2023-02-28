@@ -14,8 +14,8 @@ namespace Agenda.Contatos.Repository
 
         UsuarioModel Cadastrar(UsuarioModel usuario);
 
-        UsuarioModel EditarContato(UsuarioModel usuario);
+        UsuarioModel EditarUsuario(UsuarioModel usuario);
 
-        bool ApagarContato(int id);
+        bool ApagarUsuario(int id);
     }
 }

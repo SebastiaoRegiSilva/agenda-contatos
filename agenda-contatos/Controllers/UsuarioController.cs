@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Controllers
 {
+    /// <summary>Controller que provê endpoints relacionados à entidade usuário.</summary>
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
@@ -49,7 +50,7 @@ namespace Agenda.Contatos.Controllers
         {
             try
             {
-                var apagado = _usuarioRepository.ApagarContato(id);
+                var apagado = _usuarioRepository.ApagarUsuario(id);
                 if (apagado)
                     TempData["MensagemSucesso"] = "apagado";
                 else
