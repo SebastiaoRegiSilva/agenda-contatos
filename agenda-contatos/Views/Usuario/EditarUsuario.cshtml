@@ -1,0 +1,55 @@
+﻿@model UsuarioModel
+@{ ViewData["Title"] = "Edição de usuários"; }
+
+<!--Botão de voltar para tela anterior.-->
+<button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
+
+<form asp-controller="Usuario" asp-action="EditarUsuario" method="post">
+	<!--Asp action -->
+	<div class="text-center">
+		<h1 class="display-4">Editar usuário</h1>
+	</div>
+
+	<div class="form-group">
+		<label for="nome">Nome</label>
+		<input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
+		@Html.ValidationMessageFor(n => n.Nome)
+	</div>
+
+	<div class="form-group">
+		<label for="login">Login</label>
+		<input type="text" asp-for="Login" class="form-control" placeholder="Digite o seu login">
+		@Html.ValidationMessageFor(n => n.Login)
+	</div>
+
+	<div class="form-group">
+		<label for="senha">Senha</label>
+		<input type="password" asp-for="Senha" class="form-control" placeholder="Digite a sua senha">
+		@Html.ValidationMessageFor(c => c.Senha)
+	</div>
+
+	<div class="form-group">
+		<label for="senha">Repita sua Senha</label>
+		<input type="password" asp-for="Senha" class="form-control" placeholder="Digite a sua senha">
+		@Html.ValidationMessageFor(c => c.Senha)
+	</div>
+
+	<div class="form-group">
+		<label for="email">Endereço de e-mail</label>
+		<input type="email" asp-for="Email" class="form-control" placeholder="Digite o endereço de e-mail">
+		@Html.ValidationMessageFor(e => e.Email)
+	</div>
+
+	<select class="form-select" aria-label="Default select example">
+		<option selected>Selecione o tipo de permissão do usuário</option>
+		<option value="1">Administrador</option>
+		<option value="2">Padrão</option>
+	</select>
+	<br />
+	<br />
+
+	<!--Botão para enviar todo o formulário-->
+	<button type="submit" class="btn btn-primary">Alterar</button>
+	<!--Voltar a página inicial-->
+	<a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Página Inicial</a>
+</form>
