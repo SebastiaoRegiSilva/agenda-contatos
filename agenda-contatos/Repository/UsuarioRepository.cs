@@ -46,7 +46,7 @@ namespace Agenda.Contatos.Repository
         /// <summary>
         /// Buscar todos dados dos usuários cadastrados na base de dados.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Todos usuário cadastrados.</returns>
         public List<UsuarioModel> BuscarTodos()
         {
             return _dataContext.Usuarios.ToList();
