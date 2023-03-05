@@ -1,14 +1,13 @@
 ﻿using Agenda.Contatos.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UsuarioModel
     {
-        
         /// <summary>
         /// Código de identificação do usuário.
         /// </summary>
