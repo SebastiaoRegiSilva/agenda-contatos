@@ -1,9 +1,7 @@
-﻿using Agenda.Contatos.Repository;
+﻿using Agenda.Contatos.Models;
+using Agenda.Contatos.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Controllers
 {
@@ -21,9 +19,15 @@ namespace Agenda.Contatos.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
+        /// <summary>
+        /// Página inicial que exibe todos usuários cadastrados.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
-            return View();
+            var usuarios = _usuarioRepository.BuscarTodos();
+
+            return View(usuarios);
         }
 
         public IActionResult CadastrarUsuario()
@@ -73,6 +77,55 @@ namespace Agenda.Contatos.Controllers
         {
             var usuarioRecuperado = _usuarioRepository.BuscarPorId(id);
             return View(usuarioRecuperado);
+        }
+
+        // Métodos POST.
+        [HttpPost]
+        public IActionResult CadastrarUsuario(UsuarioModel usuario)
+        {
+            try
+            {
+                // Validação com Data Annotations.
+                if (ModelState.IsValid)
+                {
+                    _usuarioRepository.Cadastrar(usuario);
+                    TempData["MensagemSucesso"] = "cadastrado";
+                    return RedirectToAction("Index");
+                }
+
+                return View(usuario);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, usuário não foi cadastrado! ERRO =>{ex.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
+        /// <summary>
+        /// Editar usuário com base em seu código de identificação.
+        /// </summary>
+        /// <param name="usuario">Usuário.</param>
+        [HttpPost]
+        public IActionResult EditarUsuario(UsuarioModel usuario)
+        {
+            try
+            {
+                // Validação com Data Annotations.
+                if (ModelState.IsValid)
+                {
+                    _usuarioRepository.EditarUsuario(usuario);
+                    TempData["MensagemSucesso"] = "alterado";
+                    return RedirectToAction("Index");
+                }
+
+                return View(usuario);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, usuário não foi editado! ERRO =>{ex.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }
