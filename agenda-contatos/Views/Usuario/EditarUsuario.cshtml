@@ -23,18 +23,6 @@
 	</div>
 
 	<div class="form-group">
-		<label for="senha">Senha</label>
-		<input type="password" asp-for="Senha" class="form-control" placeholder="Digite a sua senha">
-		@Html.ValidationMessageFor(c => c.Senha)
-	</div>
-
-	<div class="form-group">
-		<label for="senha">Repita sua Senha</label>
-		<input type="password" asp-for="Senha" class="form-control" placeholder="Digite a sua senha">
-		@Html.ValidationMessageFor(c => c.Senha)
-	</div>
-
-	<div class="form-group">
 		<label for="email">Endereço de e-mail</label>
 		<input type="email" asp-for="Email" class="form-control" placeholder="Digite o endereço de e-mail">
 		@Html.ValidationMessageFor(e => e.Email)
