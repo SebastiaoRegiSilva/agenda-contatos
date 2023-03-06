@@ -1,5 +1,9 @@
-﻿@model UsuarioModel
-@{ ViewData["Title"] = "Edição de usuários"; }
+﻿@using Agenda.Contatos.Enums
+@model UsuarioModel
+
+@{ 
+	ViewData["Title"] = "Edição de usuários"; 
+}
 
 <!--Botão de voltar para tela anterior.-->
 <button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
@@ -30,8 +34,8 @@
 
 	<select class="form-select" aria-label="Default select example">
 		<option selected>Selecione o tipo de permissão do usuário</option>
-		<option value="1">Administrador</option>
-		<option value="2">Padrão</option>
+		<option value="@Permissao.Admin">Administrador</option>
+		<option value="@Permissao.Padrao">Padrão</option>
 	</select>
 	<br />
 	<br />
