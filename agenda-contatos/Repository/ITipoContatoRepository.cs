@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace Agenda.Contatos.Repository
 {
     /// <summary>Interface que padroniza o repositório dos tipos de contato.</summary>
-    interface ITipoContatoRepository
-    {
+    public interface ITipoContatoRepository
+    { 
         /// <summary>
         /// Cadastra no repositório um tipo de contato.
         /// </summary>
