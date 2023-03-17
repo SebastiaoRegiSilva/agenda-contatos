@@ -23,7 +23,7 @@ namespace Agenda.Contatos.Repository
         /// Busca no repositório todos os tipo de contato cadastrados.
         /// </summary>
         /// <returns>Lista de tipos de contato.</returns>
-        List<TipoContatoModel> BuscarTodosTipoContatos();
+        List<TipoContatoModel> BuscarTodosTipoContato();
 
         /// <summary>
         /// Edita no repositório um tipo de contato com base em seu código de identificação.
