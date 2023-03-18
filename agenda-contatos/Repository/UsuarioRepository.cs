@@ -9,9 +9,12 @@ namespace Agenda.Contatos.Repository
 {
     public class UsuarioRepository : IUsuarioRepository
     {
+        /// <summary>
+        /// Contexto utilizado pelo repositório de usuários .</summary> 
+        /// </summary>
         private readonly DataContext _dataContext;
 
-        public UsuarioRepository(DataContext dataContext)
+       public UsuarioRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
@@ -22,7 +25,7 @@ namespace Agenda.Contatos.Repository
         /// <param name="id">Código de identificação do usuário.</param>
         public bool ApagarUsuario(int id)
         {
-            var usuarioDb = BuscarPorId(id);
+            var usuarioDb = BuscarUsuarioPorId(id);
             if (usuarioDb == null)
                 throw new Exception("Usuário não encontrado na base de dados.");
             else
@@ -38,7 +41,7 @@ namespace Agenda.Contatos.Repository
         /// </summary>
         /// <param name="id">Código de identificação do usuário.</param>
         /// <returns>Único usuário correspondente ao código de identificação.</returns>
-        public UsuarioModel BuscarPorId(int id)
+        public UsuarioModel BuscarUsuarioPorId(int id)
         {
             return _dataContext.Usuarios.FirstOrDefault(c => c.Id == id);
         }
@@ -47,25 +50,29 @@ namespace Agenda.Contatos.Repository
         /// Buscar todos dados dos usuários cadastrados na base de dados.
         /// </summary>
         /// <returns>Todos usuário cadastrados.</returns>
-        public List<UsuarioModel> BuscarTodos()
+        public List<UsuarioModel> BuscarTodosUsuarios()
         {
             return _dataContext.Usuarios.ToList();
         }
 
-        public UsuarioModel Cadastrar(UsuarioModel usuario)
+        /// <summary>
+        /// Cadastrar um usuário na base de dados.
+        /// </summary>
+        public UsuarioModel CadastrarUsuario(UsuarioModel usuario)
         {
             _dataContext.Usuarios.Add(usuario);
             _dataContext.SaveChangesAsync();
             return usuario;
         }
 
+       
         /// <summary>
         /// Editar usuário no banco de dados com base no usuário. - Melhorar!
         /// </summary>
         /// <param name="usuario"></param>
-       public UsuarioModel EditarUsuario(UsuarioModel usuario)
+        public UsuarioModel EditarUsuario(UsuarioModel usuario)
         {
-            var usuarioDb = BuscarPorId(usuario.Id);
+            var usuarioDb = BuscarUsuarioPorId(usuario.Id);
             if (usuarioDb == null)
                 throw new Exception("Erro de edição do usuário!");
             else
