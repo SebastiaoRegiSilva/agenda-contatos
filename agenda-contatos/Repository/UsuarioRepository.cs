@@ -3,7 +3,6 @@ using Agenda.Contatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Repository
 {
@@ -84,7 +83,7 @@ namespace Agenda.Contatos.Repository
                 usuarioDb.DataAtualizacao = DateTime.Now.Date;
                 
                 _dataContext.Usuarios.Update(usuarioDb);
-                _dataContext.SaveChanges();
+                _dataContext.SaveChangesAsync();
 
                 return usuarioDb;
             }
