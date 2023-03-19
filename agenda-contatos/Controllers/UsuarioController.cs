@@ -25,7 +25,7 @@ namespace Agenda.Contatos.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
-            var usuarios = _usuarioRepository.BuscarTodos();
+            var usuarios = _usuarioRepository.BuscarTodosUsuarios();
 
             return View(usuarios);
         }
@@ -40,9 +40,14 @@ namespace Agenda.Contatos.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Edita um usuário com base em seu código de identificação.
+        /// </summary>
+        /// <param name="id">Código de identificação do usuário.</param>
+        /// <returns>View de edição.</returns>
         public IActionResult EditarUsuario(int id)
         {
-            var usuario = _usuarioRepository.BuscarPorId(id);
+            var usuario = _usuarioRepository.BuscarUsuarioPorId(id);
 
             return View(usuario);
         }
@@ -75,7 +80,7 @@ namespace Agenda.Contatos.Controllers
         /// <param name="id">Código de identificação do usuário a ser excluído.</param>
         public IActionResult ApagarConfirmacao(int id)
         {
-            var usuarioRecuperado = _usuarioRepository.BuscarPorId(id);
+            var usuarioRecuperado = _usuarioRepository.BuscarUsuarioPorId(id);
             return View(usuarioRecuperado);
         }
 
@@ -88,7 +93,7 @@ namespace Agenda.Contatos.Controllers
                 // Validação com Data Annotations.
                 if (ModelState.IsValid)
                 {
-                    _usuarioRepository.Cadastrar(usuario);
+                    _usuarioRepository.CadastrarUsuario(usuario);
                     TempData["MensagemSucesso"] = "cadastrado";
                     return RedirectToAction("Index");
                 }
