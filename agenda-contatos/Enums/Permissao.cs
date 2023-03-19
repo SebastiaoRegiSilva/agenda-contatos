@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Agenda.Contatos.Enums
+﻿namespace Agenda.Contatos.Enums
 {
     /// <summary>
     /// Níveis de permissão para cada usuário.
@@ -16,7 +11,7 @@ namespace Agenda.Contatos.Enums
         Admin = 1,
         
         /// <summary>
-        /// Acesso mínimo às funcionalidados do sistema.
+        /// Acesso mínimo às funcionalidades do sistema.
         /// </summary>
         Padrao = 2,
     }
