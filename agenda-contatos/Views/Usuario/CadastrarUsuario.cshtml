@@ -16,36 +16,38 @@
 	<div class="form-group">
 		<label for="nome">Nome</label>
 		<input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do usuário">
-		@Html.ValidationMessageFor(n => n.Nome)
+		@Html.ValidationMessageFor(u => u.Nome)
 	</div>
 
 	<div class="form-group">
 		<label for="login">Login</label>
 		<input type="text" asp-for="Login" class="form-control" placeholder="Digite o seu login">
-		@Html.ValidationMessageFor(n => n.Login)
+		@Html.ValidationMessageFor(u => u.Login)
 	</div>
 
 	<div class="form-group">
 		<label for="senha">Senha</label>
 		<input type="password" asp-for="Senha" class="form-control" placeholder="Digite a sua senha">
-		@Html.ValidationMessageFor(c => c.Senha)
+		@Html.ValidationMessageFor(u => u.Senha)
 	</div>
 
-	<div class="form-group">
-		<label for="senha">Repita sua Senha</label>
-		<input type="password" asp-for="Senha" class="form-control" placeholder="Digite a sua senha novamente">
-		@Html.ValidationMessageFor(c => c.Senha)
-	</div>
+	<!--
+		<div class="form-group">
+			<label for="senha">Repita sua Senha</label>
+			<input type="password" asp-for="Senha" class="form-control" placeholder="Digite a sua senha novamente">
+			@Html.ValidationMessageFor(u => u.Senha)
+		</div>
+	-->
 
 	<div class="form-group">
 		<label for="email">Endereço de e-mail</label>
 		<input type="email" asp-for="Email" class="form-control" placeholder="Digite o endereço de e-mail">
-		@Html.ValidationMessageFor(e => e.Email)
+		@Html.ValidationMessageFor(u => u.Email)
 	</div>
 
 	<div class="form-group">
 		<label for="nome">Permissão</label> <br />
-		<select asp-for="NivelPermissao" aria-label="Default select example">
+		<select asp-for="NivelPermissao" class="form-control"  aria-label="Default select example">
 			<option value="0">Selecione o tipo de permissão do usuário</option>
 			<option value="@Permissao.Admin">Administrador</option>
 			<option value="@Permissao.Padrao">Padrão</option>
