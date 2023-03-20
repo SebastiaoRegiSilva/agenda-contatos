@@ -50,8 +50,7 @@
 		<tbody>
 			@if (Model != null && Model.Any())
 			{
-				var contador = 1; ;// Contador para enumerar os contatos.
-				// Implementar um dropdown no tipo de contato - Melhoria.
+				var contador = 1; ;
 				foreach (var register in Model.OrderBy(r => r.Nome))
 				{
 					<tr>
