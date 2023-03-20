@@ -43,11 +43,15 @@
 		@Html.ValidationMessageFor(e => e.Email)
 	</div>
 
-	<select class="form-select" aria-label="Default select example">
-		<option selected>Selecione o tipo de permissão do usuário</option>
-		<option value="@Permissao.Admin">Administrador</option>
-		<option value="@Permissao.Padrao">Padrão</option>
-	</select>
+	<div class="form-group">
+		<label for="nome">Permissão</label> <br />
+		<select asp-for="NivelPermissao" aria-label="Default select example">
+			<option value="0">Selecione o tipo de permissão do usuário</option>
+			<option value="@Permissao.Admin">Administrador</option>
+			<option value="@Permissao.Padrao">Padrão</option>
+		</select>
+	</div>
+
 	<br />
 	<br />
 
