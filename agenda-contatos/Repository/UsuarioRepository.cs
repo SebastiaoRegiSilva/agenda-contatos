@@ -80,10 +80,10 @@ namespace Agenda.Contatos.Repository
                 usuarioDb.Login = usuario.Login;
                 usuarioDb.Nome = usuario.Nome;
                 usuarioDb.NivelPermissao = usuario.NivelPermissao;
-                usuarioDb.DataAtualizacao = DateTime.Now.Date;
+                usuarioDb.DataAtualizacao = DateTime.Now;
                 
                 _dataContext.Usuarios.Update(usuarioDb);
-                _dataContext.SaveChangesAsync();
+                _dataContext.SaveChanges();
 
                 return usuarioDb;
             }
