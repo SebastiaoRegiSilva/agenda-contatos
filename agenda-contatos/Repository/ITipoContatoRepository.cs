@@ -30,11 +30,5 @@ namespace Agenda.Contatos.Repository
         /// </summary>
         /// <param name="id">Código de identificação de um tipo de contato.</param>
         TipoContatoModel BuscarTipoContatoPorId(int id);
-
-        /// <summary>
-        /// Edita no repositório um tipo de contato.
-        /// </summary>
-        /// <param name="tipoContato">Modelo de um tipo de contato.</param>
-        TipoContatoModel EditarTipoContato(TipoContatoModel tipoContato);
     }
 }
