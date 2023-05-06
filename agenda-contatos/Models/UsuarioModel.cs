@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Agenda.Contatos.Models
 {
     /// <summary>
-    /// 
+    /// Modelo de um usuário a ser salvo na base dados.
     /// </summary>
     public class UsuarioModel
     {
