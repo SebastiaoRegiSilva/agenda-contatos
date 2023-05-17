@@ -1,0 +1,29 @@
+﻿@model TipoContatoModel
+
+@{
+	ViewData["Title"] = "Cadastro de tipo de contato";
+}
+<!--Botão de voltar para tela anterior.-->
+<button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
+
+<form asp-controller="TipoContato" asp-action="CadastrarTipoContato" method="post">
+	<!--Asp action -->
+	<div class="text-center">
+		<h1 class="display-4">Cadastrar tipos de contato</h1>
+	</div>
+
+	<div class="form-group">
+		<label for="nome">Nome</label>
+		<input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do tipo do contato">
+		@Html.ValidationMessageFor(u => u.Nome)
+	</div>
+
+	<br />
+	<br />
+
+	<!--Botão para enviar todo o formulário-->
+	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<!--Implementar um auto-refresh para corrigir BUG-->
+	<!--Voltar a página inicial-->
+	<a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Página Inicial</a>
+</form>

@@ -68,24 +68,5 @@ namespace Agenda.Contatos.Repository
             _dataContext.SaveChangesAsync();
             return tipoContato;
         }
-
-        /// <summary>
-        /// Edita na base de dados um no tipo de contato.
-        /// </summary>
-        /// <param name="tipoContato">Modelo de tipo de contato a ser editado.</param>
-        public TipoContatoModel EditarTipoContato(TipoContatoModel tipoContato)
-        {
-            var tipoContatoDb = BuscarTipoContatoPorId(tipoContato.Id);
-            if (tipoContatoDb == null)
-                throw new Exception("Erro de edição no tipo de contato!");
-            else
-            {
-                tipoContatoDb.Nome = tipoContato.Nome;
-                _dataContext.TiposDeContato.Update(tipoContatoDb);
-                _dataContext.SaveChanges();
-
-                return tipoContatoDb;
-            }
-        }
     }
 }

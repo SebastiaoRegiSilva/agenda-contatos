@@ -1,4 +1,5 @@
-﻿using Agenda.Contatos.Repository;
+﻿using Agenda.Contatos.Models;
+using Agenda.Contatos.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -31,36 +32,24 @@ namespace Agenda.Contatos.Controllers
             return View();
         }
 
-        public IActionResult BuscarTipoContato()
-        {
-            return View();
-        }
-
-        public IActionResult EditarTipoContato(int id)
-        {
-            var tipoDeContato = _tipoContatoRepository.BuscarTipoContatoPorId(id);
-
-            return View(tipoDeContato);
-        }
-
         /// <summary>
         /// Exclusão após confirmação.
         /// </summary>
         public IActionResult ApagarTipoContato(int id)
         {
+            // Validações
+            // Criar um função para verificar se há algum contato com esse tipo de contato cadastro e impedir a exclusão.
             try
             {
                 var apagado = _tipoContatoRepository.ApagarTipoContato(id);
                 if (apagado)
                     TempData["MensagemSucesso"] = "apagado";
-                else
-                    TempData["MensagemErro"] = $"Ops, tipo de contato não foi apagado!";
-
+                
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["MensagemErro"] = $"Ops, tipo de contato não foi apagado! ERRO =>{ex.Message}";
+                TempData["MensagemErro"] = $"Tipo de contato não pode ser apagado por está vinculado à algum contato.";
                 return RedirectToAction("Index");
             }
         }
@@ -76,5 +65,25 @@ namespace Agenda.Contatos.Controllers
         }
 
         // Métodos POST.
+        [HttpPost]
+        public IActionResult CadastrarTipoContato(TipoContatoModel tipoContato)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _tipoContatoRepository.CadastrarTipoContato(tipoContato);
+                    TempData["MensagemSucesso"] = "cadastrado";
+                    return RedirectToAction("Index");
+                }
+
+                return View(tipoContato);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Ops, tipo de contato não foi cadastrado! ERRO =>{ex.Message}";
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
