@@ -37,19 +37,19 @@ namespace Agenda.Contatos.Controllers
         /// </summary>
         public IActionResult ApagarTipoContato(int id)
         {
+            // Validações
+            // Criar um função para verificar se há algum contato com esse tipo de contato cadastro e impedir a exclusão.
             try
             {
                 var apagado = _tipoContatoRepository.ApagarTipoContato(id);
                 if (apagado)
                     TempData["MensagemSucesso"] = "apagado";
-                else
-                    TempData["MensagemErro"] = $"Ops, tipo de contato não foi apagado!";
-
+                
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["MensagemErro"] = $"Ops, tipo de contato não foi apagado! ERRO =>{ex.Message}";
+                TempData["MensagemErro"] = $"Tipo de contato não pode ser apagado por está vinculado à algum contato.";
                 return RedirectToAction("Index");
             }
         }
