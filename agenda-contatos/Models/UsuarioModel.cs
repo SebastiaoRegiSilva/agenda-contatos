@@ -55,5 +55,15 @@ namespace Agenda.Contatos.Models
         /// Data de alteração em alguma das propriedades do usuário.
         /// </summary>
         public DateTime? DataAtualizacao { get; set; }
+
+        /// <summary>
+        /// Validação simples de verificação de senha inserida pelo usuário na tela de login.
+        /// </summary>
+        /// <param name="senha">Senha do usuário de acesso ao sistema.</param>
+        /// <returns></returns>
+        public bool ValidarSenha(string senha)
+        {
+            return Senha == senha;
+        }
     }
 }
