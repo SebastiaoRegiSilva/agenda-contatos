@@ -59,8 +59,23 @@ namespace Agenda.Contatos.Repository
         /// </summary>
         public UsuarioModel CadastrarUsuario(UsuarioModel usuario)
         {
-            _dataContext.Usuarios.Add(usuario);
+            _ = new UsuarioModel();
+
+            UsuarioModel usuarioFunc = new()
+            {
+                Id = usuario.Id,
+                Nome = usuario.Nome,
+                Login = usuario.Login,
+                Senha = usuario.Senha,
+                Email = usuario.Email,
+                NivelPermissao = usuario.NivelPermissao,
+                DataCadastro = DateTime.Today.Date,
+                DataAtualizacao = usuario.DataAtualizacao
+            };
+
+            _dataContext.Usuarios.Add(usuarioFunc);
             _dataContext.SaveChangesAsync();
+            
             return usuario;
         }
 
@@ -80,7 +95,7 @@ namespace Agenda.Contatos.Repository
                 usuarioDb.Login = usuario.Login;
                 usuarioDb.Nome = usuario.Nome;
                 usuarioDb.NivelPermissao = usuario.NivelPermissao;
-                usuarioDb.DataAtualizacao = DateTime.Now.Date;
+                usuarioDb.DataAtualizacao = DateTime.Now.Date.Date;
                 
                 _dataContext.Usuarios.Update(usuarioDb);
                 _dataContext.SaveChangesAsync();
