@@ -38,12 +38,12 @@
 		<input type="text" asp-for="Estado" class="form-control" placeholder="Digite o nome do Estado/Província">
 	</div>
 
-	<select asp-for="Tipo" aria-label="Default select example">
-		<option value="0">Selecione o tipo de contato</option>
+	<select class="div-select" id="select" onchange="redirect_to.value=redirect_original.value+this.value" aria-label="Default select example">
+		<option disabled selected>Selecione o tipo de contato</option>
 		<option value="Família">Família</option>
 		<option value="Faculdade">Faculdade</option>
 		<option value="Trabalho">Trabalho</option>
-		<option value="Ainda implementar">Adicionar tipo inexistente</option>
+		<option data-url="https://localhost:44340/TipoContato/CadastrarTipoContato">Adicionar tipo inexistente</option>
 	</select>
 	<br />
 	<br />

@@ -1,0 +1,20 @@
+﻿@model TipoContatoModel
+
+@{ 
+	ViewData["Title"] = "Exclusão de tipo de contato"; 
+}
+
+<!--Botão de voltar para tela anterior.-->
+<button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button><p>
+
+	<div class="text-center">
+		<h3>Tela de exclusão de tipos de contato.</h3>
+	</div>
+
+	<div class="text-sm-left">
+		<h5>Realmente deseja excluir @Model.Nome?</h5>
+	</div>
+	<!--Recuperar informções mínimas do contato para exclusão.-->
+
+	<a class="btn btn-primary" role="button" asp-controller="TipoContato" asp-action="ApagarTipoContato" asp-route-id="@Model.Id">Confirmar</a>
+	<a class="btn btn-danger" role="button" asp-controller="Home" asp-action="Index">Cancelar</a>

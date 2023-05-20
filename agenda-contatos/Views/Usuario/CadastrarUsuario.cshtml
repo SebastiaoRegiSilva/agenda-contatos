@@ -46,7 +46,11 @@
 	</div>
 
 	<div class="form-group">
+<<<<<<< HEAD
 		<label for="permossao">Permissão</label> <br />
+=======
+		<label for="nome">Permissão</label> <br />
+>>>>>>> master
 		<select asp-for="NivelPermissao" class="form-control" aria-label="Default select example">
 			<option value="0">Selecione o tipo de permissão do usuário</option>
 			<option value="@Permissao.Admin">Administrador</option>
@@ -60,6 +64,7 @@
 
 	<!--Botão para enviar todo o formulário-->
 	<button type="submit" class="btn btn-primary">Adicionar</button>
+	<!--Implementar um auto-refresh para corrigir BUG-->
 	<!--Voltar a página inicial-->
 	<a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Página Inicial</a>
 </form>
