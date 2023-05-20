@@ -46,12 +46,13 @@
 	</div>
 
 	<div class="form-group">
-		<label for="nome">Permissão</label> <br />
-		<select asp-for="NivelPermissao" class="form-control"  aria-label="Default select example">
+		<label for="permossao">Permissão</label> <br />
+		<select asp-for="NivelPermissao" class="form-control" aria-label="Default select example">
 			<option value="0">Selecione o tipo de permissão do usuário</option>
 			<option value="@Permissao.Admin">Administrador</option>
 			<option value="@Permissao.Padrao">Padrão</option>
 		</select>
+		@Html.ValidationMessageFor(u => u.NivelPermissao)
 	</div>
 
 	<br />
