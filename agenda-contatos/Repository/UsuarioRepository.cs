@@ -36,6 +36,15 @@ namespace Agenda.Contatos.Repository
         }
 
         /// <summary>
+        /// Buscar usuário no banco de dados com base em seu login.
+        /// </summary>
+        /// <param name="login">Chave de acesso do usuário ao sistema.</param>
+        public UsuarioModel BuscarPorLogin(string login)
+        {
+            return _dataContext.Usuarios.FirstOrDefault(c => c.Login.ToUpper() == login.ToUpper());
+        }
+
+        /// <summary>
         /// Buscar usuário no banco de dados com base em seu código de identificação.
         /// </summary>
         /// <param name="id">Código de identificação do usuário.</param>
@@ -78,8 +87,7 @@ namespace Agenda.Contatos.Repository
             
             return usuario;
         }
-
-       
+               
         /// <summary>
         /// Editar usuário no banco de dados com base no usuário. - Melhorar!
         /// </summary>
