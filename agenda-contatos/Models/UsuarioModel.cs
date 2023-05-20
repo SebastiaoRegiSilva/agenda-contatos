@@ -44,7 +44,7 @@ namespace Agenda.Contatos.Models
         /// Nível de acesso às funcionalidades do sistema.
         /// </summary>
         [Required(ErrorMessage = "Informe o tipo de permissão")]
-        public Permissao NivelPermissao { get; set; }
+        public Permissao? NivelPermissao { get; set; }
         
         /// <summary>
         /// Data de cadastro do usuário.
