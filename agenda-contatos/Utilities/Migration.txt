@@ -1,7 +1,0 @@
-﻿Adicionar nova tabela no banco com relação ao banco. No entity eu crio uma model e rodo a migration, 
-depois atualizado com os comando no package manager console. 
-
-Add-Migration CriandoTabelaContatos -Context DataContext 
-
-Atualizar a Migration, criando a tabela e a base de dados. 
-Update-Database -Context DataContext

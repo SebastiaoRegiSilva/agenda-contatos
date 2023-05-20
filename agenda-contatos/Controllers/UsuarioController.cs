@@ -108,18 +108,28 @@ namespace Agenda.Contatos.Controllers
         }
 
         /// <summary>
-        /// Editar usuário com base em seu código de identificação.
+        /// Editar um usuário sem senha com base em seu código de identificação.
         /// </summary>
-        /// <param name="usuario">Usuário.</param>
+        /// <param name="usuarioSemSenha">Usuário sem senha.</param>
         [HttpPost]
-        public IActionResult EditarUsuario(UsuarioModel usuario)
+        public IActionResult EditarUsuario(UsuarioSemSenhaModel usuarioSemSenha)
         {
             try
             {
+                UsuarioModel usuario = null;
                 // Validação com Data Annotations.
                 if (ModelState.IsValid)
                 {
-                    _usuarioRepository.EditarUsuario(usuario);
+                    usuario = new UsuarioModel
+                    {
+                        Id = usuarioSemSenha.Id,
+                        Nome = usuarioSemSenha.Nome,
+                        Login = usuarioSemSenha.Login,
+                        Email = usuarioSemSenha.Email,
+                        NivelPermissao = usuarioSemSenha.NivelPermissao
+                    };
+                    
+                    usuario = _usuarioRepository.EditarUsuario(usuario);
                     TempData["MensagemSucesso"] = "alterado";
                     return RedirectToAction("Index");
                 }
@@ -128,7 +138,7 @@ namespace Agenda.Contatos.Controllers
             }
             catch (Exception ex)
             {
-                TempData["MensagemErro"] = $"Ops, usuário não foi editado! ERRO =>{ex.Message}";
+                TempData["MensagemErro"] = $"Ops, usuário sem senha não foi editado! ERRO =>{ex.Message}";
                 return RedirectToAction("Index");
             }
         }

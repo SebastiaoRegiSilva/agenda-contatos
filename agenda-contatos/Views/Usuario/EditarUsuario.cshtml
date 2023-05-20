@@ -2,9 +2,9 @@
 @model UsuarioModel
 
 @{ 
-	ViewData["Title"] = "Edição de usuários"; 
-	
+	ViewData["Title"] = "Edição de usuários";
 }
+
 <!--Botão de voltar para tela anterior.-->
 <button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
 
@@ -13,8 +13,6 @@
 	<div class="text-center">
 		<h1 class="display-4">Editar usuário</h1>
 	</div>
-
-	<input type="hidden" asp-for="Id" />
 
 	<div class="form-group">
 		<label for="nome">Nome</label>
@@ -35,8 +33,8 @@
 	</div>
 
 	<div class="form-group">
-		<label for="nome">Permissão</label> <br />
-		<select asp-for="NivelPermissao" class="form-control" aria-label="Default select example">
+		<label for="permissao">Permissão</label> <br />
+		<select asp-for="NivelPermissao" aria-label="Default select example">
 			<option value="0">Selecione o tipo de permissão do usuário</option>
 			<option value="@Permissao.Admin">Administrador</option>
 			<option value="@Permissao.Padrao">Padrão</option>
@@ -49,7 +47,6 @@
 
 	<!--Botão para enviar todo o formulário-->
 	<button type="submit" class="btn btn-primary">Alterar</button>
-	
 	<!--Voltar a página inicial-->
 	<a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Página Inicial</a>
 </form>

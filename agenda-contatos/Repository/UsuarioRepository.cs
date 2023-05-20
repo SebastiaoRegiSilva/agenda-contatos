@@ -36,6 +36,15 @@ namespace Agenda.Contatos.Repository
         }
 
         /// <summary>
+        /// Buscar usuário no banco de dados com base em seu login.
+        /// </summary>
+        /// <param name="login">Chave de acesso do usuário ao sistema.</param>
+        public UsuarioModel BuscarPorLogin(string login)
+        {
+            return _dataContext.Usuarios.FirstOrDefault(c => c.Login.ToUpper() == login.ToUpper());
+        }
+
+        /// <summary>
         /// Buscar usuário no banco de dados com base em seu código de identificação.
         /// </summary>
         /// <param name="id">Código de identificação do usuário.</param>
@@ -59,12 +68,26 @@ namespace Agenda.Contatos.Repository
         /// </summary>
         public UsuarioModel CadastrarUsuario(UsuarioModel usuario)
         {
-            _dataContext.Usuarios.Add(usuario);
+            _ = new UsuarioModel();
+
+            UsuarioModel usuarioFunc = new()
+            {
+                Id = usuario.Id,
+                Nome = usuario.Nome,
+                Login = usuario.Login,
+                Senha = usuario.Senha,
+                Email = usuario.Email,
+                NivelPermissao = usuario.NivelPermissao,
+                DataCadastro = DateTime.Today.Date,
+                DataAtualizacao = usuario.DataAtualizacao
+            };
+
+            _dataContext.Usuarios.Add(usuarioFunc);
             _dataContext.SaveChangesAsync();
+            
             return usuario;
         }
-
-       
+               
         /// <summary>
         /// Editar usuário no banco de dados com base no usuário. - Melhorar!
         /// </summary>
@@ -80,10 +103,10 @@ namespace Agenda.Contatos.Repository
                 usuarioDb.Login = usuario.Login;
                 usuarioDb.Nome = usuario.Nome;
                 usuarioDb.NivelPermissao = usuario.NivelPermissao;
-                usuarioDb.DataAtualizacao = DateTime.Now;
+                usuarioDb.DataAtualizacao = DateTime.Now.Date.Date;
                 
                 _dataContext.Usuarios.Update(usuarioDb);
-                _dataContext.SaveChanges();
+                _dataContext.SaveChangesAsync();
 
                 return usuarioDb;
             }

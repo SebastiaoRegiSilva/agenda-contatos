@@ -53,16 +53,16 @@
 			@if (Model != null && Model.Any())
 			{
 				var contador = 1; ;// Contador para enumerar os usuários.
-				foreach (var register in Model.OrderBy(r => r.NivelPermissao))
+				foreach (var register in Model.OrderBy(r => r.Nome))
 				{
 					<tr>
 						<th scope="row">@contador</th>
 						<td>@register.Nome</td>
 						<td>@register.Email</td>
 						<td>@register.Login</td>
-						<td>@register.DataCadastro</td>
-						<td>@register.DataAtualizacao</td>
-						<td>@register.NivelPermissao</td>
+						<td>@register.DataCadastro.ToString("dd/MM/yyyy")</td>
+						<td>@register.DataAtualizacao.Value.ToString("dd/MM/yyyy")</td>
+						<td>@(register.NivelPermissao == Agenda.Contatos.Enums.Permissao.Admin ? "Administrador" : "Padrão")</td>
 						<td align="right">
 							<div class="btn-group" role="group">
 								<a role="button" class="btn btn-primary" asp-route-id="@register.Id" asp-controller="Usuario" asp-action="EditarUsuario">Editar</a>

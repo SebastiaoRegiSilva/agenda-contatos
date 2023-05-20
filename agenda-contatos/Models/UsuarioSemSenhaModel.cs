@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 namespace Agenda.Contatos.Models
 {
     /// <summary>
-    /// 
+    /// Modelo de usuário com acesso ao sistema sem a senha. 
     /// </summary>
-    public class UsuarioModel
+    public class UsuarioSemSenhaModel
     {
         /// <summary>
         /// Código de identificação do usuário.
@@ -27,13 +27,6 @@ namespace Agenda.Contatos.Models
         public string Login { get; set; }
 
         /// <summary>
-        /// Senha do usuário de acesso ao sistema.
-        /// Implementar melhorias, criptografar, SALT.
-        /// </summary>
-        [Required(ErrorMessage = "Digite a senha do usuário")]
-        public string Senha { get; set; }
-
-        /// <summary>
         /// Email do usuário para busca e eventual recuperação de acesso.
         /// </summary>
         [Required(ErrorMessage = "Digite o e-mail do usuário")]
@@ -45,25 +38,5 @@ namespace Agenda.Contatos.Models
         /// </summary>
         [Required(ErrorMessage = "Informe o tipo de permissão")]
         public Permissao? NivelPermissao { get; set; }
-        
-        /// <summary>
-        /// Data de cadastro do usuário.
-        /// </summary>
-        public DateTime DataCadastro { get; set; }
-        
-        /// <summary>
-        /// Data de alteração em alguma das propriedades do usuário.
-        /// </summary>
-        public DateTime? DataAtualizacao { get; set; }
-
-        /// <summary>
-        /// Validação simples de verificação de senha inserida pelo usuário na tela de login.
-        /// </summary>
-        /// <param name="senha">Senha do usuário de acesso ao sistema.</param>
-        /// <returns></returns>
-        public bool ValidarSenha(string senha)
-        {
-            return Senha == senha;
-        }
     }
 }
