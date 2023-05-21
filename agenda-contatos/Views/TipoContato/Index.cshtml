@@ -1,0 +1,66 @@
+﻿@model List<TipoContatoModel>
+
+@{
+	ViewData["Title"] = "Listagem de tipos de contato";
+}
+
+<!--Botão de voltar para tela anterior.-->
+<button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button><p>
+
+
+<div class="text-left">
+	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+		<a class="btn btn-primary" role="button" asp-controller="TipoContato" asp-action="CadastrarTipoContato">Cadastrar novo tipo de contato</a>
+		<br />
+	</div>
+
+	<div class="text-center">
+		<h1 class="display-4">Listagem de Tipos de Contato</h1>
+	</div>
+	@if (TempData["MensagemSucesso"] != null)
+	{
+		<!--Modal, cada caixa de alerta.-->
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			O tipo de contato foi @TempData["MensagemSucesso"] com sucesso!
+		</div>
+	}
+
+	@if (TempData["MensagemErro"] != null)
+	{
+		<div class="alert alert-danger" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			@TempData["MensagemErro"]
+		</div>
+	}
+
+	<!-- Bootstrap Table example -->
+	<table class="table table-striped" id="table-tipoContatos">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th> <!--Não permitir esse campo vazio ou com caracter numérico ou especial. -->
+				<th scope="col"><!--Botões de edição/exclusão. --></th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model != null && Model.Any())
+			{
+				var contador = 1; ;// Contador para enumerar os usuários.
+				foreach (var register in Model.OrderBy(r => r.Id))
+				{
+					<tr>
+						<th scope="row">@contador</th>
+						<td>@register.Nome</td>
+						<td align="center">
+							<div class="btn-group" role="group">
+								<a role="button" class="btn btn-danger" asp-route-id="@register.Id" asp-controller="TipoContato" asp-action="ApagarConfirmacao">Apagar</a>
+							</div>
+						</td>
+					</tr>
+					contador++;
+				}
+			}
+		</tbody>
+	</table>
+</div>

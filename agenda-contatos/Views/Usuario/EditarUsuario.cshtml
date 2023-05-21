@@ -2,9 +2,9 @@
 @model UsuarioModel
 
 @{ 
-	ViewData["Title"] = "Edição de usuários";
+	ViewData["Title"] = "Edição de usuários"; 
+	
 }
-
 <!--Botão de voltar para tela anterior.-->
 <button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
 
@@ -13,6 +13,8 @@
 	<div class="text-center">
 		<h1 class="display-4">Editar usuário</h1>
 	</div>
+
+	<input type="hidden" asp-for="Id" />
 
 	<div class="form-group">
 		<label for="nome">Nome</label>
@@ -47,6 +49,7 @@
 
 	<!--Botão para enviar todo o formulário-->
 	<button type="submit" class="btn btn-primary">Alterar</button>
+	
 	<!--Voltar a página inicial-->
 	<a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Página Inicial</a>
 </form>

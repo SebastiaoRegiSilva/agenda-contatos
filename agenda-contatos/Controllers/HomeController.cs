@@ -1,14 +1,11 @@
-﻿using Agenda.Contatos.Models;
+﻿using Agenda.Contatos.Filters;
+using Agenda.Contatos.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class HomeController : Controller
     {
         public IActionResult Index()

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Agenda.Contatos.Models
 {
+    /// Modelo de um contato a ser salvo na base dados.
     public class ContatoModel
     {
         /// <summary>

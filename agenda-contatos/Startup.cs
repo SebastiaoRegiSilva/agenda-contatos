@@ -1,7 +1,9 @@
 using Agenda.Contatos.Data;
+using Agenda.Contatos.Helper;
 using Agenda.Contatos.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,8 +26,14 @@ namespace Agenda.Contatos
             services.AddControllersWithViews();
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<DataContext>( o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
-
             // Injeção de dependência.
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<Helper.ISession, Session>();
+            services.AddSession(s => {
+                s.Cookie.HttpOnly = true;
+                s.Cookie.IsEssential = true;
+
+            });
             services.AddScoped<IContatoRepository, ContatoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ITipoContatoRepository, TipoContatoRepository>();
@@ -50,6 +58,8 @@ namespace Agenda.Contatos
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
