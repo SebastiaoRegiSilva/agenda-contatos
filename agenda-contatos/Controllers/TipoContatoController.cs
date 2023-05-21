@@ -1,10 +1,12 @@
-﻿using Agenda.Contatos.Models;
+﻿using Agenda.Contatos.Filters;
+using Agenda.Contatos.Models;
 using Agenda.Contatos.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace Agenda.Contatos.Controllers
 {
+    [PaginaParaUsuarioLogado]
     /// <summary>Controller que provê endpoints relacionados à entidade tipo de contato.</summary>
     public class TipoContatoController : Controller
     {
