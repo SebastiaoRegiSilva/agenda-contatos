@@ -61,7 +61,7 @@
 						<td>@register.Email</td>
 						<td>@register.Login</td>
 						<td>@register.DataCadastro.ToString("dd/MM/yyyy")</td>
-						<td>@register.DataAtualizacao.Value.ToString("dd/MM/yyyy")</td>
+						<td>@if (register.DataAtualizacao != null) register.DataAtualizacao.Value.ToString("dd/MM/yyyy");</td>
 						<td>@(register.NivelPermissao == Agenda.Contatos.Enums.Permissao.Admin ? "Administrador" : "Padrão")</td>
 						<td align="right">
 							<div class="btn-group" role="group">
