@@ -45,22 +45,26 @@ namespace Agenda.Contatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    UsuarioModel usuario = _usuarioRepository.BuscarPorLogin(loginModel.Login);
+                    //UsuarioModel usuario = _usuarioRepository.BuscarPorLogin(loginModel.Login);
                     
-                    if(usuario != null)
+                    // Acesso chumbado para implementação do front-end
+                    if (loginModel == new LoginModel(){ Login = "jp", Password = "123"})
                     {
-                        if(usuario.ValidarSenha(loginModel.Password))
-                        {
-                            _session.InicializarSessaoUsuario(usuario);
-                            return RedirectToAction("Index", "Home");
-                        }
+                        //if(usuario.ValidarSenha(loginModel.Password))
+                        //{
+
+                        //}
                             
-                        TempData["MensagemErro"] = $"Senha incorreta!";
+                        //TempData["MensagemErro"] = $"Senha incorreta!";
                     }
                     
-                    TempData["MensagemErro"] = $"Usuário e/ou senha incorreto(s)!";
+                    /// TempData["MensagemErro"] = $"Usuário e/ou senha incorreto(s)!";
                 }
-                return View("Index");
+                UsuarioModel usuario = new() { Login = loginModel.Login, Senha = loginModel.Password };
+                _session.InicializarSessaoUsuario(usuario);
+                return RedirectToAction("Index", "Home");
+
+                //return View("Index");
             }
             catch(Exception erro)
             {
