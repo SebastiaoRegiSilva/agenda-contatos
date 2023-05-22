@@ -131,7 +131,7 @@ namespace Agenda.Contatos.Controllers
                         NivelPermissao = usuarioSemSenha.NivelPermissao
                     };
                     
-                    usuario = _usuarioRepository.EditarUsuario(usuario);
+                    _usuarioRepository.EditarUsuario(usuario);
                     TempData["MensagemSucesso"] = "alterado";
                     return RedirectToAction("Index");
                 }

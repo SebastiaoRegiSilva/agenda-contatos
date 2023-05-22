@@ -1,4 +1,5 @@
 ﻿using Agenda.Contatos.Enums;
+using Agenda.Contatos.Helper.Cryptography;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -64,6 +65,15 @@ namespace Agenda.Contatos.Models
         public bool ValidarSenha(string senha)
         {
             return Senha == senha;
+        }
+
+        /// <summary>
+        /// Converte a senha em um hash.
+        /// </summary>
+        public void SetSenhaHash()
+        {
+            // Implementar aqui o GUID. Para IDs ímpares terá a criptografia via GUID.
+            Senha = Senha.GerarHash();
         }
     }
 }
