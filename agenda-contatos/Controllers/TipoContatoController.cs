@@ -6,7 +6,7 @@ using System;
 
 namespace Agenda.Contatos.Controllers
 {
-    [PaginaParaUsuarioLogado]
+    [PaginaRestritaParaAdmin]
     /// <summary>Controller que provê endpoints relacionados à entidade tipo de contato.</summary>
     public class TipoContatoController : Controller
     {
