@@ -68,12 +68,15 @@ namespace Agenda.Contatos.Models
         }
 
         /// <summary>
-        /// Converte a senha em um hash.
+        /// Responsável com criptografar a senha antes de persisti-la no banco de dados.
         /// </summary>
-        public void SetSenhaHash()
+        /// <param name="id">Código de identificação do usuário.</param>
+        public void SetSenhaHash(int id)
         {
-            // Implementar aqui o GUID. Para IDs ímpares terá a criptografia via GUID.
-            Senha = Senha.GerarHash();
+            if (id % 2 != 0)
+                Senha = Senha.GerarGuid();
+            else
+                Senha = Senha.GerarHash();
         }
     }
 }

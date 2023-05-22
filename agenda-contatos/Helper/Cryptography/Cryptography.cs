@@ -18,7 +18,7 @@ namespace Agenda.Contatos.Helper.Cryptography
         {
             var guid = new Guid(value);
 
-            return null;
+            return guid.ToString();
         }
 
         /// <summary>

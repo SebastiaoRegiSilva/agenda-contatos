@@ -69,7 +69,7 @@ namespace Agenda.Contatos.Repository
         public UsuarioModel CadastrarUsuario(UsuarioModel usuario)
         {
             usuario.DataCadastro = DateTime.Now;
-            usuario.SetSenhaHash();
+            usuario.SetSenhaHash(usuario.Id);
             _dataContext.Usuarios.Add(usuario);
             _dataContext.SaveChangesAsync();
             
