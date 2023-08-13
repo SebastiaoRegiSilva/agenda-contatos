@@ -104,4 +104,6 @@ body {
 	position: absolute;
 }
 
-a
+.a{
+	display: flex;
+}
