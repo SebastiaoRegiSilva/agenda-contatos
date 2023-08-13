@@ -94,3 +94,12 @@ body {
 	width: 30px;
 	height: 31px;
 }
+
+.cop{
+	padding: 0;
+	width: 900px;
+	margin: 0 auto;
+	background: red;
+	display: flex;
+	position: absolute;
+}
