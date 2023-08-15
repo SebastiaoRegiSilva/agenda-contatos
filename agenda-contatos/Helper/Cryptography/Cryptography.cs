@@ -32,5 +32,11 @@ namespace Agenda.Contatos.Helper.Cryptography
             return strExad.ToString();
         }
         /// O this na linha 17 me permite usar essa função como um método de extensão lá no usuarioModel.
+
+        public static string GerarGuid()
+        {
+            return new Exception().ToString();
+        }
     }
+
 }
