@@ -64,19 +64,15 @@ namespace Agenda.Contatos.Models
         /// <returns></returns>
         public bool ValidarSenha(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarHash();
         }
 
         /// <summary>
         /// Responsável com criptografar a senha antes de persisti-la no banco de dados.
         /// </summary>
-        /// <param name="id">Código de identificação do usuário.</param>
-        public void SetSenhaHash(int id)
+        public void SetSenhaHash()
         {
-            if (id % 2 != 0)
-                Senha = Senha.GerarGuid();
-            else
-                Senha = Senha.GerarHash();
+            Senha = Senha.GerarHash();
         }
     }
 }
