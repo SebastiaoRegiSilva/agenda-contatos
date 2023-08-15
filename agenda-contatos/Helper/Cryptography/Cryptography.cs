@@ -10,18 +10,6 @@ namespace Agenda.Contatos.Helper.Cryptography
     public static class Cryptography
     {
         /// <summary>
-        ///  Gerar um (GUID)globally unique identifier - Indentificador global único.
-        /// </summary>
-        /// <param name="value">Valor do qual será gerado um GUID.</param>
-        /// <returns></returns>
-        public static string GerarGuid(this string value)
-        {
-            var guid = new Guid(value);
-
-            return guid.ToString();
-        }
-
-        /// <summary>
         /// Gerar um hash a partir do valor de entrada.
         /// </summary>
         /// <param name="value">Valor do qual será gerado um hash.</param>
@@ -43,5 +31,6 @@ namespace Agenda.Contatos.Helper.Cryptography
 
             return strExad.ToString();
         }
+        /// O this na linha 17 me permite usar essa função como um método de extensão lá no usuarioModel.
     }
 }
