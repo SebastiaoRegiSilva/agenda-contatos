@@ -1,5 +1,5 @@
 ﻿using Agenda.Contatos.Enums;
-using Agenda.Contatos.Helper.Cryptography;
+using Agenda.Contatos.Security.Encrypt;
 using System;
 using System.ComponentModel.DataAnnotations;
 
