@@ -24,5 +24,10 @@
 		<input type="password" asp-for="Password" class="form-control" id="senha">
 		@Html.ValidationMessageFor(l => l.Password)
 	</div>
+	<p class="mb-4 text-sm-left mx-auto">
+		Esqueci minha senha!
+		<a asp-action="RedefinirSenha" asp-controller="Login" class="text-primary text-gradient font-weight-bold">Redefinir nova senha!</a>
+	</p>
+
 	<button type="submit" class="btn btn-primary">Entrar</button>
 </form>
