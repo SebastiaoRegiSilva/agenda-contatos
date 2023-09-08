@@ -78,5 +78,42 @@ namespace Agenda.Contatos.Controllers
             _session.FinalizarSessaoUsuario();
             return RedirectToAction("Index", "Login");
         }
+
+        /// <summary>
+        /// Redefine nova senha do usuário.
+        /// </summary>
+        /// <returns>Tela de redefinição de senha.</returns>
+        public IActionResult RedefinirSenha()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Redefine nova senha do usuário.
+        /// </summary>
+        [HttpPost]
+        public IActionResult EnviarRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UsuarioModel usuario = _usuarioRepository.BuscarPorLogin(loginModel.Login);
+
+                    if (usuario != null)
+                    {
+                        TempData["MensagemErro"] = $"Senha incorreta!";
+                    }
+
+                    TempData["MensagemErro"] = $"Não foi possível redefinir a senha, verifique os dados inseridos!";
+                }
+                return View("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Não foi possível redefinir a senha, tente novamente. Detalhe do erro : { erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
