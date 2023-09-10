@@ -5,14 +5,6 @@
 	ViewData["Title"] = "Redefinir Senha";
 }
 
-@if (TempData["MensagemErro"] != null)
-{
-	<div class="alert alert-danger" role="alert">
-		<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
-		@TempData["MensagemErro"]
-	</div>
-}
-
 <form asp-controller="Login" asp-action="EnviarRedefinirSenha" method="post">
 	<div class="mb-3">
 		<label for="login" class="form-label">Login</label>
