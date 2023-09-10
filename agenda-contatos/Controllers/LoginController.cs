@@ -98,11 +98,14 @@ namespace Agenda.Contatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    UsuarioModel usuario = _usuarioRepository.BuscarPorLogin(loginModel.Login);
+                    UsuarioModel usuarioRecuperado = _usuarioRepository.BuscarPorEmailLogin(redefinirSenhaModel.Login, redefinirSenhaModel.Email);
 
-                    if (usuario != null)
+                    if (usuarioRecuperado != null)
                     {
-                        TempData["MensagemErro"] = $"Senha incorreta!";
+                        string novaSenha = usuarioRecuperado.GerarNovaSenha();
+                        
+                        TempData["MensagemSucesso"] = $"Enviamos para o e-mail cadastrado um nova senha de acesso!";
+                        return RedirectToAction("Index", "Login");
                     }
 
                     TempData["MensagemErro"] = $"Não foi possível redefinir a senha, verifique os dados inseridos!";
