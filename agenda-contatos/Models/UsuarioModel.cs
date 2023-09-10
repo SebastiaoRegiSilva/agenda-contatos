@@ -74,5 +74,16 @@ namespace Agenda.Contatos.Models
         {
             Senha = Senha.GerarHash();
         }
+
+        /// <summary>
+        /// Gerar nova senha para usuário, para redefinição de senha.
+        /// </summary>
+        /// <returns>Nova senha de acesso ao sistema.</returns>
+        public string GerarNovaSenha ()
+        {
+            string novaSenha = new Guid().ToString().Substring(0, 10);
+            Senha = novaSenha.GerarHash();
+            return novaSenha;
+        }
     }
 }
