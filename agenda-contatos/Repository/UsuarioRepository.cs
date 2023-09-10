@@ -45,6 +45,19 @@ namespace Agenda.Contatos.Repository
         }
 
         /// <summary>
+        ///  Busca na base de dados um usuário com base em seu login e email.
+        /// </summary>
+        /// <param name="login">Chave de acesso do usuário ao sistema.</param>
+        /// <param name="email">E-mail de acesso do usuário ao sistema.</param>
+        /// <returns>Usuário com base em seu e-mail e login.</returns>
+        public UsuarioModel BuscarPorEmailLogin(string login, string email)
+        {
+            return _dataContext.Usuarios.FirstOrDefault(
+                u => u.Login.ToUpper() == login.ToUpper() && 
+                u.Email == email);
+        }
+
+        /// <summary>
         /// Buscar usuário no banco de dados com base em seu código de identificação.
         /// </summary>
         /// <param name="id">Código de identificação do usuário.</param>
