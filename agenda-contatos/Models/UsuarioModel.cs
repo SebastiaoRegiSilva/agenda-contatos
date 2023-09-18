@@ -81,7 +81,7 @@ namespace Agenda.Contatos.Models
         /// <returns>Nova senha de acesso ao sistema.</returns>
         public string GerarNovaSenha ()
         {
-            string novaSenha = new Guid().ToString().Substring(0, 10);
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
             Senha = novaSenha.GerarHash();
             return novaSenha;
         }
