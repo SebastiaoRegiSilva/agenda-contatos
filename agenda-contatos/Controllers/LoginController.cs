@@ -6,6 +6,7 @@ using System;
 
 namespace Agenda.Contatos.Controllers
 {
+    //todo Implementar logs nas operações com logins.
     public class LoginController : Controller
     {
         // Injeção de depedência...
@@ -13,16 +14,20 @@ namespace Agenda.Contatos.Controllers
 
         // Injeção de depedência...
         private readonly ISession _session;
+
+        // Injeção de dependência...
+        private readonly IEmail _email;
             
         /// <summary>
         /// Construtor com parâmetros para inicialização.
         /// </summary>
         /// <param name="usuarioRepository"></param>
         /// <param name="session"></param>
-        public LoginController(IUsuarioRepository usuarioRepository, ISession session)
+        public LoginController(IUsuarioRepository usuarioRepository, ISession session, IEmail email)
         {
             _usuarioRepository = usuarioRepository;
             _session = session;
+            _email = email;
         }
 
         public IActionResult Index()
@@ -103,8 +108,18 @@ namespace Agenda.Contatos.Controllers
                     if (usuarioRecuperado != null)
                     {
                         string novaSenha = usuarioRecuperado.GerarNovaSenha();
-                        
-                        TempData["MensagemSucesso"] = $"Enviamos para o e-mail cadastrado um nova senha de acesso!";
+                        string mensagem = $"Sua nova senha é:{novaSenha}";
+                        //Enviar e-mail
+                        bool emailEnviado = _email.EnviarEmail(usuarioRecuperado.Email, "Sistema de contatos", mensagem);
+
+                        if(emailEnviado)
+                        {
+                            _usuarioRepository.EditarUsuario(usuarioRecuperado);
+                            TempData["MensagemSucesso"] = $"Enviamos para o e-mail cadastrado um nova senha de acesso!";
+                        }
+                        else
+                            TempData["MensagemErro"] = $"Não foi possível enviar o e-mail, tente novamente, por favor!";
+
                         return RedirectToAction("Index", "Login");
                     }
 
