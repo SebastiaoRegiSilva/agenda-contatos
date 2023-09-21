@@ -1,28 +1,65 @@
 ﻿@model LoginModel
 
 @{
-	Layout = "_LayoutLoggedOut";
-	ViewData["Title"] = "Login";
+    Layout = "_LayoutLoggedOut";
+    ViewData["Title"] = "Login";
 }
 
 @if (TempData["MensagemErro"] != null)
 {
-	<div class="alert alert-danger" role="alert">
-		<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
-		@TempData["MensagemErro"]
-	</div>
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
 }
 
-<form asp-controller="Login" asp-action="Entrar" method="post">
-	<div class="mb-3">
-		<label for="login" class="form-label">Login</label>
-		<input type="text" asp-for="Login" class="form-control" id="login">
-		@Html.ValidationMessageFor(l => l.Login)
-	</div>
-	<div class="mb-3">
-		<label for="senha" class="form-label">Senha</label>
-		<input type="password" asp-for="Password" class="form-control" id="senha">
-		@Html.ValidationMessageFor(l => l.Password)
-	</div>
-	<button type="submit" class="btn btn-primary">Entrar</button>
-</form>
+<div class="main">
+
+    <div class="container-left">
+        <div class="logo">
+            <img src="~/img/icon-logo.svg" alt="logo Contact System">
+            <span><h1>Contact System</h1></span>
+        </div>
+        <div class="main-left">
+            <div class="login-message">
+                <h1 class="txt-start">Get Started Now</h1>
+                <h2 class="txt-second"> Display a search bar prominently so that users.</h2>
+            </div>
+            <div class="social-login">
+                <button class="btn-social"><img class="img-social" src="~/img/google.svg" alt="icon do google">Login with Google</button>
+                <button class="btn-social">
+                    <img class="img-social" src="~/img/apple.png" alt="icon da apple">Login with Apple
+                </button>
+            </div>
+            <div class="another-login">
+                <h3 class="or-txt">or</h3>
+            </div>
+            <div class="login">
+                <form asp-controller="Login" asp-action="Entrar" method="post">
+                    <label class="label-email" for="login"><h3>Email</h3></label>
+                    <input asp-for="Login" id="login" class="input-email" type="email" name="email" placeholder="Your Email">
+                    @Html.ValidationMessageFor(l => l.Login)
+                    <div class="password-form">
+                        <label class="label-password" for=""><h3>Password</h3></label>
+                        <span><a href="#" class="forget-pass">Forget Password</a></span>
+                    </div>
+                    <input asp-for="Password" id="senha" type="password" name="password" class="input-password" placeholder="Your Password">
+                    @Html.ValidationMessageFor(l => l.Password)
+                    <div class="terms">
+                        <input type="checkbox" name="" id="cb-1">
+                        <label class="txt-box-terms" for="cb-1">I am agree to the Terms & Conditions!</label>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <div class="creat-account">
+                        <h4>Have an account? <a href="#" class="sign">Sign in</a></h4>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-right">
+        <h1 class="kalam">Contact system dashboard content should be easy to use</h1>
+        <img class="photos" src="~/img/photos.svg" alt="Mulher sorrindo de bracos cruzados de blusa branca">
+    </div>
+</div>

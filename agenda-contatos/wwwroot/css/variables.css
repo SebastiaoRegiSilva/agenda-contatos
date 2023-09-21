@@ -1,0 +1,13 @@
+﻿:root {
+    --btn-primary: #33A4BB;
+    --btn-primary-hover: #1f97ae;
+    --txt-primary-hover: #ffffff;
+    --blue-colors-txt: #33A4BB;
+    --black-colors-txt: #151A2A;
+    --white--colors: #ffffff;
+    --gray-colors-txt: #656565;
+    --gray-colors-second: #9FA3A6;
+    --gray-colors-hover: #d5d5d633;
+    --black-colors-hover: #33A4BB;
+    --gray-colors-bg: #F0F0F0;
+}
