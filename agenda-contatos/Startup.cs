@@ -29,6 +29,7 @@ namespace Agenda.Contatos
             // Injeção de dependência.
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<Helper.ISession, Session>();
+            services.AddScoped<IEmail, Email>();
             services.AddSession(s => {
                 s.Cookie.HttpOnly = true;
                 s.Cookie.IsEssential = true;

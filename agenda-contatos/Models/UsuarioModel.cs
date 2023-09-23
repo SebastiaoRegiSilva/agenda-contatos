@@ -1,4 +1,5 @@
 ﻿using Agenda.Contatos.Enums;
+using Agenda.Contatos.Security.Encrypt;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -63,7 +64,26 @@ namespace Agenda.Contatos.Models
         /// <returns></returns>
         public bool ValidarSenha(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarHash();
+        }
+
+        /// <summary>
+        /// Responsável com criptografar a senha antes de persisti-la no banco de dados.
+        /// </summary>
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarHash();
+        }
+
+        /// <summary>
+        /// Gerar nova senha para usuário, para redefinição de senha.
+        /// </summary>
+        /// <returns>Nova senha de acesso ao sistema.</returns>
+        public string GerarNovaSenha ()
+        {
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
+            Senha = novaSenha.GerarHash();
+            return novaSenha;
         }
     }
 }

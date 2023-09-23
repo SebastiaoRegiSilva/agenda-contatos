@@ -45,6 +45,19 @@ namespace Agenda.Contatos.Repository
         }
 
         /// <summary>
+        ///  Busca na base de dados um usuário com base em seu login e email.
+        /// </summary>
+        /// <param name="login">Chave de acesso do usuário ao sistema.</param>
+        /// <param name="email">E-mail de acesso do usuário ao sistema.</param>
+        /// <returns>Usuário com base em seu e-mail e login.</returns>
+        public UsuarioModel BuscarPorEmailLogin(string login, string email)
+        {
+            return _dataContext.Usuarios.FirstOrDefault(
+                u => u.Login.ToUpper() == login.ToUpper() && 
+                u.Email == email);
+        }
+
+        /// <summary>
         /// Buscar usuário no banco de dados com base em seu código de identificação.
         /// </summary>
         /// <param name="id">Código de identificação do usuário.</param>
@@ -68,21 +81,9 @@ namespace Agenda.Contatos.Repository
         /// </summary>
         public UsuarioModel CadastrarUsuario(UsuarioModel usuario)
         {
-            _ = new UsuarioModel();
-
-            UsuarioModel usuarioFunc = new()
-            {
-                Id = usuario.Id,
-                Nome = usuario.Nome,
-                Login = usuario.Login,
-                Senha = usuario.Senha,
-                Email = usuario.Email,
-                NivelPermissao = usuario.NivelPermissao,
-                DataCadastro = DateTime.Today.Date,
-                DataAtualizacao = usuario.DataAtualizacao
-            };
-
-            _dataContext.Usuarios.Add(usuarioFunc);
+            usuario.DataCadastro = DateTime.Now;
+            usuario.SetSenhaHash();
+            _dataContext.Usuarios.Add(usuario);
             _dataContext.SaveChangesAsync();
             
             return usuario;
@@ -103,9 +104,7 @@ namespace Agenda.Contatos.Repository
                 usuarioDb.Login = usuario.Login;
                 usuarioDb.Nome = usuario.Nome;
                 usuarioDb.NivelPermissao = usuario.NivelPermissao;
-                usuarioDb.DataAtualizacao = DateTime.Now.Date.Date;
                 usuarioDb.DataAtualizacao = DateTime.Now;
-
                 
                 _dataContext.Usuarios.Update(usuarioDb);
                 _dataContext.SaveChanges();
