@@ -93,11 +93,11 @@
     justify-content: space-between;
 }
 
-.label-email{
+.label-login{
     display:flex;
 }
 
-.label-email, .password-form {
+.label-login, .password-form {
     margin-top: 1.8rem;
     display: flex;
 }
