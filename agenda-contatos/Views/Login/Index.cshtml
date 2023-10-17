@@ -23,53 +23,53 @@
 }
 
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8" />
-</head>
-<body>
-	<div class="main">
-		<div class="container-left">
-			<div class="logo">
-				<img src="~/img/icon-logo.svg" alt="logo Contact System">
-				<span>Sistema de controle de contatos.</span>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<div class="main">
+			<div class="container-left">
+				<div class="logo">
+					<img src="~/img/icon-logo.svg" alt="logo Contact System">
+					<span>Sistema de controle de contatos.</span>
+				</div>
+				<div class="main-left">
+					<div class="login-message">
+						<h1 class="txt-start">Comece agora!</h1>
+						<h2 class="txt-second">Busca de contatos.</h2>
+					</div>
+					<div class="social-login">
+						<button class="btn-social"><img class="img-social" src="~/img/google.svg" alt="icon do google">Login com Google</button>
+					</div>
+					<div class="login">
+						<form asp-controller="Login" asp-action="Entrar" method="post">
+							<label class="label-login" for="login">Login</label>
+							<input asp-for="Login" id="login" placeholder="Digite seu login">
+							@Html.ValidationMessageFor(l => l.Login)
+							<div class="password-form">
+								<label class="label-password" for="">Senha</label>
+								<span><a href="https://localhost:44340/Login/RedefinirSenha" class="forget-pass">Esqueci minha senha!</a></span>
+							</div>
+							<input asp-for="Password" id="senha" type="password" name="password" class="input-password" placeholder="Digite sua senha">
+							@Html.ValidationMessageFor(l => l.Password)
+							<button type="submit" class="btn-primary">Login</button>
+							<div class="creat-account">
+								<h4>Não possui uma conta de acesso? <a href="#" class="sign">Criar conta</a></h4>
+							</div>
+						<!--<div class="terms">
+								<input type="checkbox" name="" id="cb-1">
+								<label class="txt-box-terms" for="cb-1">Eu aceito os termos e condições!</label>
+							</div>-->
+						</form>
+					</div>
+				</div>
 			</div>
-			<div class="main-left">
-				<div class="login-message">
-					<h1 class="txt-start">Comece agora!</h1>
-					<h2 class="txt-second">Busca de contatos.</h2>
-				</div>
-				<div class="social-login">
-					<button class="btn-social"><img class="img-social" src="~/img/google.svg" alt="icon do google">Login com Google</button>
-				</div>
-				<div class="login">
-					<form asp-controller="Login" asp-action="Entrar" method="post">
-						<label class="label-login" for="login">Login</label>
-						<input asp-for="Login" id="login" placeholder="Digite seu login">
-						@Html.ValidationMessageFor(l => l.Login)
-						<div class="password-form">
-							<label class="label-password" for="">Senha</label>
-							<span><a href="#" class="forget-pass">Esqueci minha senha!</a></span>
-						</div>
-						<input asp-for="Password" id="senha" type="password" name="password" class="input-password" placeholder="Digite sua senha">
-						@Html.ValidationMessageFor(l => l.Password)
-						<div class="terms">
-							<input type="checkbox" name="" id="cb-1">
-							<label class="txt-box-terms" for="cb-1">Eu aceito os termos e condi��es!</label>
-						</div>
-						<button type="submit" class="btn-primary">Login</button>
-						<div class="creat-account">
-							<h4>N�o possui uma conta de acesso? <a href="#" class="sign">Criar conta</a></h4>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
 
-		<div class="container-right">
-			<h1 class="kalam">Sistema de controle de contatos e usu�rios!</h1>
-			<img class="photos" src="~/img/photos.svg" alt="Mulher sorrindo de braços cruzados de blusa branca.">
+			<div class="container-right">
+				<h1 class="kalam">Sistema de controle de contatos e usuários!</h1>
+				<img class="photos" src="~/img/photos.svg" alt="Mulher sorrindo de braços cruzados de blusa branca.">
+			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>

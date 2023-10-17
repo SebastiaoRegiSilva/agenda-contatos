@@ -1,0 +1,59 @@
+﻿@model AlterarSenhaModel
+
+@{
+	ViewData["Title"] = "Alterar senha do usuário";
+
+}
+<!--Botão de voltar para tela anterior.-->
+<button onclick="history.back()" title="Clique para voltar(Alt + Seta para a esquerda)">Voltar</button>
+
+<form asp-controller="NovaSenha" asp-action="AlterarSenha" method="post">
+	<!--Asp action -->
+	<div class="text-center">
+		<h1 class="display-4">Alterar senha do usuário</h1>
+	</div>
+
+	@if (TempData["MensagemSucesso"] != null)
+	{
+		<!--Modal, cada caixa de alerta.-->
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			@TempData["MensagemSucesso"]
+		</div>
+	}
+
+	@if (TempData["MensagemErro"] != null)
+	{
+		<div class="alert alert-danger" role="alert">
+			<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+			@TempData["MensagemErro"]
+		</div>
+	}
+
+	<div class="form-group">
+		<label for="senhaAtual">Senha atual</label>
+		<input type="password" asp-for="SenhaAtual" class="form-control" placeholder="Digite senha atual">
+		@Html.ValidationMessageFor(u => u.SenhaAtual)
+	</div>
+
+	<div class="form-group">
+		<label for="novaSenha">Nova senha</label>
+		<input type="password" asp-for="NovaSenha" class="form-control" placeholder="Digite nova senha">
+		@Html.ValidationMessageFor(u => u.NovaSenha)
+	</div>
+
+	<div class="form-group">
+		<label for="confirmarSenha">Confirmar Senha</label>
+		<input type="password" asp-for="ConfirmarSenha" class="form-control" placeholder="Confirme nova senha">
+		@Html.ValidationMessageFor(u => u.ConfirmarSenha)
+	</div>
+
+	<br />
+	<br />
+
+	<!--Botão para enviar todo o formulário-->
+	<button type="submit" class="btn btn-primary">Alterar</button>
+
+	<!--Voltar a página inicial-->
+	<a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Página Inicial</a>
+</form>
