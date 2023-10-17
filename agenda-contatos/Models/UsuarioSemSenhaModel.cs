@@ -1,5 +1,4 @@
 ﻿using Agenda.Contatos.Enums;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Agenda.Contatos.Models

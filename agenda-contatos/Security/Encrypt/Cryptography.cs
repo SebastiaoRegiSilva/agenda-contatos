@@ -24,7 +24,7 @@ namespace Agenda.Contatos.Security.Encrypt
 
             var strExad = new StringBuilder();
 
-            foreach(var register in array)
+            foreach (var register in array)
             {
                 strExad.Append(register.ToString("x2"));
             }

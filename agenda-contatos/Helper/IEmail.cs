@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Agenda.Contatos.Helper
+﻿namespace Agenda.Contatos.Helper
 {
     /// <summary>
     /// Interface que padroniza a gestão de envio de e-mails.

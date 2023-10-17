@@ -17,7 +17,7 @@ namespace Agenda.Contatos.Controllers
 
         // Injeção de dependência...
         private readonly IEmail _email;
-            
+
         /// <summary>
         /// Construtor com parâmetros para inicialização.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Agenda.Contatos.Controllers
             // Se usuário estiver redirecionar para a index da Home.
             if (_session.BuscarSessaoUsuario() != null)
                 RedirectToAction("Index", "Home");
-            
+
             return View();
         }
 
@@ -46,23 +46,23 @@ namespace Agenda.Contatos.Controllers
         [HttpPost]
         public IActionResult Entrar(LoginModel loginModel)
         {
-            try 
+            try
             {
                 if (ModelState.IsValid)
                 {
                     //UsuarioModel usuario = _usuarioRepository.BuscarPorLogin(loginModel.Login);
-                    
+
                     // Acesso chumbado para implementação do front-end
-                    if (loginModel == new LoginModel(){ Login = "jp", Password = "123"})
+                    if (loginModel == new LoginModel() { Login = "jp", Password = "123" })
                     {
                         //if(usuario.ValidarSenha(loginModel.Password))
                         //{
 
                         //}
-                            
+
                         //TempData["MensagemErro"] = $"Senha incorreta!";
                     }
-                    
+
                     /// TempData["MensagemErro"] = $"Usuário e/ou senha incorreto(s)!";
                 }
                 UsuarioModel usuario = new() { Login = loginModel.Login, Senha = loginModel.Password };
@@ -71,7 +71,7 @@ namespace Agenda.Contatos.Controllers
 
                 //return View("Index");
             }
-            catch(Exception erro)
+            catch (Exception erro)
             {
                 TempData["MensagemErro"] = $"Não foi possível logar com o usuário e senha. : { erro.Message}";
                 return RedirectToAction("Index");
@@ -82,7 +82,7 @@ namespace Agenda.Contatos.Controllers
         /// Encerra uma sessão de usuário logado.
         /// </summary>
         /// <returns>View de Login.</returns>
-        public IActionResult EncerrarSessao ()
+        public IActionResult EncerrarSessao()
         {
             _session.FinalizarSessaoUsuario();
             return RedirectToAction("Index", "Login");
@@ -116,7 +116,7 @@ namespace Agenda.Contatos.Controllers
                         //Enviar e-mail
                         bool emailEnviado = _email.EnviarEmail(usuarioRecuperado.Email, "Sistema de contatos", mensagem);
 
-                        if(emailEnviado)
+                        if (emailEnviado)
                         {
                             _usuarioRepository.EditarUsuario(usuarioRecuperado);
                             TempData["MensagemSucesso"] = $"Enviamos para o e-mail cadastrado um nova senha de acesso!";

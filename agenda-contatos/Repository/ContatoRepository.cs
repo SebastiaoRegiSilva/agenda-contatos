@@ -9,12 +9,12 @@ namespace Agenda.Contatos.Repository
     public class ContatoRepository : IContatoRepository
     {
         private readonly DataContext _dataContext;
-        
+
         public ContatoRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
-        
+
         public ContatoModel Adicionar(ContatoModel contato)
         {
             _dataContext.Contatos.Add(contato);
@@ -38,7 +38,7 @@ namespace Agenda.Contatos.Repository
         /// <returns>Único contato correspondente ao código de identificação.</returns>
         public ContatoModel BuscarPorId(int id)
         {
-            return _dataContext.Contatos.FirstOrDefault(c =>c.Id == id);
+            return _dataContext.Contatos.FirstOrDefault(c => c.Id == id);
         }
 
         /// <summary>

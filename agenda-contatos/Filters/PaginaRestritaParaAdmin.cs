@@ -22,12 +22,12 @@ namespace Agenda.Contatos.Filters
             {
                 UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(userSession);
 
-                if(usuario is null)
+                if (usuario is null)
                     context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Login" }, { "action", "Index" } });
 
                 // Verificar se o usuário em questão tem permissão administrador.
                 // Redirecionar para uma página que informa que o acesso dele é restrito.
-                if(usuario.NivelPermissao != Enums.Permissao.Admin)
+                if (usuario.NivelPermissao != Enums.Permissao.Admin)
                     context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Restrito" }, { "action", "Index" } });
             }
 

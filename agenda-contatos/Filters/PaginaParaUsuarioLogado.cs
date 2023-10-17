@@ -22,10 +22,10 @@ namespace Agenda.Contatos.Filters
             {
                 UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(userSession);
 
-                if(usuario is null)
+                if (usuario is null)
                     context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Login" }, { "action", "Index" } });
             }
-             
+
             base.OnActionExecuting(context);
         }
     }

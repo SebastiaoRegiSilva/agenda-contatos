@@ -42,14 +42,14 @@ namespace Agenda.Contatos.Controllers
                 UsuarioModel usuarioLogado = _session.BuscarSessaoUsuario();
                 alterarSenhaModel.Id = usuarioLogado.Id;
 
-                if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     _usuarioRepository.AlterarSenha(alterarSenhaModel);
 
                     TempData["MensagemSucesso"] = $"Senha alterada com sucesso!";
                     return View("Index", alterarSenhaModel);
                 }
-                
+
                 return View("Index", alterarSenhaModel);
             }
             catch (Exception error)

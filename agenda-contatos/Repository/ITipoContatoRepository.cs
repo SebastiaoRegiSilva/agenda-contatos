@@ -5,7 +5,7 @@ namespace Agenda.Contatos.Repository
 {
     /// <summary>Interface que padroniza o repositório dos tipos de contato.</summary>
     public interface ITipoContatoRepository
-    { 
+    {
         /// <summary>
         /// Cadastra no repositório um tipo de contato.
         /// </summary>

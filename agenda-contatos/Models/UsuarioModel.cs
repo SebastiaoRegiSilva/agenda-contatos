@@ -46,12 +46,12 @@ namespace Agenda.Contatos.Models
         /// </summary>
         [Required(ErrorMessage = "Informe o tipo de permissão")]
         public Permissao? NivelPermissao { get; set; }
-        
+
         /// <summary>
         /// Data de cadastro do usuário.
         /// </summary>
         public DateTime DataCadastro { get; set; }
-        
+
         /// <summary>
         /// Data de alteração em alguma das propriedades do usuário.
         /// </summary>
@@ -79,7 +79,7 @@ namespace Agenda.Contatos.Models
         /// Gerar nova senha para usuário, para redefinição de senha.
         /// </summary>
         /// <returns>Nova senha de acesso ao sistema.</returns>
-        public string GerarNovaSenha ()
+        public string GerarNovaSenha()
         {
             string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
             Senha = novaSenha.GerarHash();

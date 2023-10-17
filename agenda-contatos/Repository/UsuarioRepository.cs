@@ -119,14 +119,14 @@ namespace Agenda.Contatos.Repository
         public UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenha)
         {
             var usuarioDb = BuscarUsuarioPorId(alterarSenha.Id);
-            
+
             if (usuarioDb == null)
                 throw new Exception("Usuário não encontrado!");
 
-            if(usuarioDb.ValidarSenha(alterarSenha.SenhaAtual) == true )
+            if (usuarioDb.ValidarSenha(alterarSenha.SenhaAtual) == true)
                 throw new Exception("Senha atual está incorreta!");
 
-            if(usuarioDb.ValidarSenha(alterarSenha.NovaSenha))
+            if (usuarioDb.ValidarSenha(alterarSenha.NovaSenha))
                 throw new Exception("Senha em utilização!");
 
             usuarioDb.SetNovaSenha(alterarSenha.NovaSenha);
@@ -134,7 +134,7 @@ namespace Agenda.Contatos.Repository
 
             _dataContext.Usuarios.Update(usuarioDb);
             _dataContext.SaveChanges();
-            
+
             return usuarioDb;
         }
     }

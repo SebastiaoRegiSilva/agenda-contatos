@@ -11,7 +11,7 @@ namespace Agenda.Contatos.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;
-        
+
         /// <summary>
         /// Construtor com injeção de dependência.
         /// </summary>
@@ -52,12 +52,12 @@ namespace Agenda.Contatos.Controllers
         {
             try
             {
-               var apagado = _contatoRepository.ApagarContato(id);
+                var apagado = _contatoRepository.ApagarContato(id);
                 if (apagado)
                     TempData["MensagemSucesso"] = "apagado";
                 else
                     TempData["MensagemErro"] = $"Ops, contato não foi apagado!";
-                
+
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

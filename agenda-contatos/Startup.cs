@@ -25,12 +25,13 @@ namespace Agenda.Contatos
         {
             services.AddControllersWithViews();
             services.AddEntityFrameworkSqlServer()
-                .AddDbContext<DataContext>( o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+                .AddDbContext<DataContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
             // Injeção de dependência.
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<Helper.ISession, Session>();
             services.AddScoped<IEmail, Email>();
-            services.AddSession(s => {
+            services.AddSession(s =>
+            {
                 s.Cookie.HttpOnly = true;
                 s.Cookie.IsEssential = true;
 

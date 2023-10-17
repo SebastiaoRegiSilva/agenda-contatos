@@ -46,7 +46,7 @@ namespace Agenda.Contatos.Controllers
                 var apagado = _tipoContatoRepository.ApagarTipoContato(id);
                 if (apagado)
                     TempData["MensagemSucesso"] = "apagado";
-                
+
                 return RedirectToAction("Index");
             }
             catch (Exception)

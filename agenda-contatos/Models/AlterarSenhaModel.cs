@@ -17,7 +17,7 @@ namespace Agenda.Contatos.Models
         /// Implementar melhorias, criptografar, SALT.
         /// </summary>
         [Required(ErrorMessage = "Digite a senha atual do usuário")]
-        
+
         public string SenhaAtual { get; set; }
         /// <summary>
         /// Nova senha do usuário de acesso ao sistema.
@@ -27,7 +27,7 @@ namespace Agenda.Contatos.Models
 
         /// <summary>
         /// Confirmar nova senha do usuário de acesso ao sistema.
-       /// </summary>
+        /// </summary>
         [Required(ErrorMessage = "Confirme a nova senha do usuário")]
         [Compare("NovaSenha", ErrorMessage = "Senhas não são iguais!")]
         public string ConfirmarSenha { get; set; }
