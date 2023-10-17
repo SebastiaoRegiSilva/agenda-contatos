@@ -53,5 +53,10 @@ namespace Agenda.Contatos.Repository
         /// <param name="id">Código de identificação do usuário.</param>
         /// <returns>Confirmação ou não da boa sucessão da operação.</returns>
         bool ApagarUsuario(int id);
+
+        /// <summary>
+        /// Alterar senha do usuário no repositório.
+        /// </summary>
+        UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenha);
     }
 }

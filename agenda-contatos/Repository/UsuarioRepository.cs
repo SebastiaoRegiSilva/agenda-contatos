@@ -13,7 +13,7 @@ namespace Agenda.Contatos.Repository
         /// </summary>
         private readonly DataContext _dataContext;
 
-       public UsuarioRepository(DataContext dataContext)
+        public UsuarioRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
@@ -53,7 +53,7 @@ namespace Agenda.Contatos.Repository
         public UsuarioModel BuscarPorEmailLogin(string login, string email)
         {
             return _dataContext.Usuarios.FirstOrDefault(
-                u => u.Login.ToUpper() == login.ToUpper() && 
+                u => u.Login.ToUpper() == login.ToUpper() &&
                 u.Email == email);
         }
 
@@ -85,10 +85,10 @@ namespace Agenda.Contatos.Repository
             usuario.SetSenhaHash();
             _dataContext.Usuarios.Add(usuario);
             _dataContext.SaveChangesAsync();
-            
+
             return usuario;
         }
-               
+
         /// <summary>
         /// Editar usuário no banco de dados com base no usuário. - Melhorar!
         /// </summary>
@@ -105,12 +105,37 @@ namespace Agenda.Contatos.Repository
                 usuarioDb.Nome = usuario.Nome;
                 usuarioDb.NivelPermissao = usuario.NivelPermissao;
                 usuarioDb.DataAtualizacao = DateTime.Now;
-                
+
                 _dataContext.Usuarios.Update(usuarioDb);
                 _dataContext.SaveChanges();
 
                 return usuarioDb;
             }
+        }
+
+        /// <summary>
+        /// Alterar senha do usuário no banco de dados.
+        /// </summary>
+        public UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenha)
+        {
+            var usuarioDb = BuscarUsuarioPorId(alterarSenha.Id);
+            
+            if (usuarioDb == null)
+                throw new Exception("Usuário não encontrado!");
+
+            if(usuarioDb.ValidarSenha(alterarSenha.SenhaAtual) == true )
+                throw new Exception("Senha atual está incorreta!");
+
+            if(usuarioDb.ValidarSenha(alterarSenha.NovaSenha))
+                throw new Exception("Senha em utilização!");
+
+            usuarioDb.SetNovaSenha(alterarSenha.NovaSenha);
+            usuarioDb.DataAtualizacao = DateTime.Now;
+
+            _dataContext.Usuarios.Update(usuarioDb);
+            _dataContext.SaveChanges();
+            
+            return usuarioDb;
         }
     }
 }

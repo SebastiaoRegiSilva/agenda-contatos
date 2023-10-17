@@ -85,5 +85,14 @@ namespace Agenda.Contatos.Models
             Senha = novaSenha.GerarHash();
             return novaSenha;
         }
+
+        /// <summary>
+        /// Responsável por criação de nova senha de usuário no banco de dados.
+        /// </summary>/
+        /// <param name="novaSenha">Nova senha do usuário de acesso ao sistema.</param>
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.GerarHash();
+        }
     }
 }
