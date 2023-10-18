@@ -30,7 +30,6 @@
 			<li class="nav-item">
 				<a class="nav-link text-dark" asp-area="" asp-controller="NovaSenha" asp-action="Index">Alterar Senha</a>
 			</li>
-
 		}
 
 		<!--Link da página sobre o autor.-->
@@ -39,6 +38,7 @@
 		</li>
 		<!--Link para deslogar. IMPLEMENTAR UM BOTÃO.-->
 		<li class="nav-item">
+			<img class="" src="~/img/sair.png" alt="Botão para deslogar da página." height="35" width="35" onclick="redirectToOther(sair)">
 			<a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="EncerrarSessao">Sair</a>
 		</li>
 	</ul>
