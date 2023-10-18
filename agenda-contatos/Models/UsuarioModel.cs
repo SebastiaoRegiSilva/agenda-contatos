@@ -61,7 +61,7 @@ namespace Agenda.Contatos.Models
         /// <summary>
         /// Conjunto de contatos que pertecem ao usuário em questão.
         /// </summary>
-        public virtual List<ContatoModel> Contacts{ get; set; }
+        public virtual List<ContatoModel> Contacts { get; set; }
 
         /// <summary>
         /// Validação simples de verificação de senha inserida pelo usuário na tela de login.
