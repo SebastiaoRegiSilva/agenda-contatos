@@ -1,6 +1,7 @@
 ﻿using Agenda.Contatos.Enums;
 using Agenda.Contatos.Security.Encrypt;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Agenda.Contatos.Models
@@ -56,6 +57,11 @@ namespace Agenda.Contatos.Models
         /// Data de alteração em alguma das propriedades do usuário.
         /// </summary>
         public DateTime? DataAtualizacao { get; set; }
+
+        /// <summary>
+        /// Conjunto de contatos que pertecem ao usuário em questão.
+        /// </summary>
+        public virtual List<ContatoModel> Contacts{ get; set; }
 
         /// <summary>
         /// Validação simples de verificação de senha inserida pelo usuário na tela de login.

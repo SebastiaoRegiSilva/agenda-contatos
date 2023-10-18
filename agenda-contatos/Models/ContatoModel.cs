@@ -41,6 +41,11 @@ namespace Agenda.Contatos.Models
         public string Estado { get; set; }
 
         /// <summary>
+        /// Entidade usuário.
+        /// </summary>
+        public UsuarioModel Usuario { get; set; }
+
+        /// <summary>
         /// Tipo de contato (Criar ENUM em Lugar do IEnumerable).
         /// </summary>
         ///[Required(ErrorMessage = "Selecione o tipo de contato")]
