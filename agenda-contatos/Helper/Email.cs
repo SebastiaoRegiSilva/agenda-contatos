@@ -33,7 +33,7 @@ namespace Agenda.Contatos.Helper
         {
             try
             {
-                string userName = _configuration.GetValue<string>("SMTP:UserName");
+                string userName = _configuration.GetValue<string>("SMTP:EndEmail");
                 string nome = "Authentication Service ";
                 string host = _configuration.GetValue<string>("SMTP:Host");
                 string senha = _configuration.GetValue<string>("SMTP:Senha");

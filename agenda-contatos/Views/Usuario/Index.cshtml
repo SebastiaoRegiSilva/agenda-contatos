@@ -10,7 +10,7 @@
 
 <div class="text-left">
 	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-		<a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="CadastrarUsuario">Adicionar novo usuário</a>
+		<a class="btn btn-primary-edit-adc" role="button" asp-controller="Usuario" asp-action="CadastrarUsuario">Adicionar novo usuário</a>
 		<br />
 	</div>
 
@@ -65,7 +65,7 @@
 						<td>@(register.NivelPermissao == Agenda.Contatos.Enums.Permissao.Admin ? "Administrador" : "Padrão")</td>
 						<td align="right">
 							<div class="btn-group" role="group">
-								<a role="button" class="btn btn-primary" asp-route-id="@register.Id" asp-controller="Usuario" asp-action="EditarUsuario">Editar</a>
+								<a role="button" class="btn btn-primary-edit-adc" asp-route-id="@register.Id" asp-controller="Usuario" asp-action="EditarUsuario">Editar</a>
 								<a role="button" class="btn btn-danger" asp-route-id="@register.Id" asp-controller="Usuario" asp-action="ApagarConfirmacao">Apagar</a>
 							</div>
 						</td>
