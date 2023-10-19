@@ -1,5 +1,6 @@
 ﻿using Agenda.Contatos.Data;
 using Agenda.Contatos.Models;
+using Agenda.Contatos.Security.Encrypt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -122,8 +123,9 @@ namespace Agenda.Contatos.Repository
 
             if (usuarioDb == null)
                 throw new Exception("Usuário não encontrado!");
-
-            if (usuarioDb.ValidarSenha(alterarSenha.SenhaAtual) == true)
+            
+            // Setar o Hash da verificação de senha.
+            if (usuarioDb.ValidarSenha(Cryptography.GerarHash(alterarSenha.SenhaAtual)))
                 throw new Exception("Senha atual está incorreta!");
 
             if (usuarioDb.ValidarSenha(alterarSenha.NovaSenha))
