@@ -5,3 +5,6 @@ Add-Migration CriandoTabelaContatos -Context DataContext
 
 Atualizar a Migration, criando a tabela e a base de dados. 
 Update-Database -Context DataContext
+
+senha de acesso a aplicação
+admin - 123
